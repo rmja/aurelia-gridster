@@ -1,4 +1,4 @@
-System.register(["aurelia-framework", "./gridster-scroll", "./gridster-push", "./gridster-push-resize", "./gridster-utils"], function (exports_1, context_1) {
+System.register(["aurelia-framework", "./gridster-scroll", "../gridster", "../gridster-item", "./gridster-push", "./gridster-push-resize", "./gridster-utils"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["aurelia-framework", "./gridster-scroll", "./gridster-push", ".
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, gridster_scroll_1, gridster_push_1, gridster_push_resize_1, gridster_utils_1, GridsterResizable;
+    var aurelia_framework_1, gridster_scroll_1, gridster_1, gridster_item_1, gridster_push_1, gridster_push_resize_1, gridster_utils_1, GridsterResizable;
     return {
         setters: [
             function (aurelia_framework_1_1) {
@@ -15,6 +15,12 @@ System.register(["aurelia-framework", "./gridster-scroll", "./gridster-push", ".
             },
             function (gridster_scroll_1_1) {
                 gridster_scroll_1 = gridster_scroll_1_1;
+            },
+            function (gridster_1_1) {
+                gridster_1 = gridster_1_1;
+            },
+            function (gridster_item_1_1) {
+                gridster_item_1 = gridster_item_1_1;
             },
             function (gridster_push_1_1) {
                 gridster_push_1 = gridster_push_1_1;
@@ -339,7 +345,7 @@ System.register(["aurelia-framework", "./gridster-scroll", "./gridster-push", ".
                     }
                 };
                 GridsterResizable = __decorate([
-                    aurelia_framework_1.autoinject
+                    aurelia_framework_1.inject(gridster_item_1.GridsterItemComponent, gridster_1.GridsterComponent)
                 ], GridsterResizable);
                 return GridsterResizable;
             }());

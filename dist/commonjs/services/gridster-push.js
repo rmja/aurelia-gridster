@@ -6,6 +6,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var gridster_1 = require("../gridster");
+var gridster_item_1 = require("../gridster-item");
 var aurelia_framework_1 = require("aurelia-framework");
 var GridsterPush = /** @class */ (function () {
     function GridsterPush(gridsterItem, gridster) {
@@ -243,7 +245,7 @@ var GridsterPush = /** @class */ (function () {
         return change;
     };
     GridsterPush = __decorate([
-        aurelia_framework_1.autoinject
+        aurelia_framework_1.inject(gridster_item_1.GridsterItemComponent, gridster_1.GridsterComponent)
     ], GridsterPush);
     return GridsterPush;
 }());

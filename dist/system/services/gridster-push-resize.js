@@ -1,4 +1,4 @@
-System.register(["../gridster", "aurelia-framework"], function (exports_1, context_1) {
+System.register(["../gridster", "../gridster-item", "aurelia-framework"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,11 +7,14 @@ System.register(["../gridster", "aurelia-framework"], function (exports_1, conte
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var gridster_1, aurelia_framework_1, GridsterPushResize;
+    var gridster_1, gridster_item_1, aurelia_framework_1, GridsterPushResize;
     return {
         setters: [
             function (gridster_1_1) {
                 gridster_1 = gridster_1_1;
+            },
+            function (gridster_item_1_1) {
+                gridster_item_1 = gridster_item_1_1;
             },
             function (aurelia_framework_1_1) {
                 aurelia_framework_1 = aurelia_framework_1_1;
@@ -223,7 +226,7 @@ System.register(["../gridster", "aurelia-framework"], function (exports_1, conte
                     return false;
                 };
                 GridsterPushResize = __decorate([
-                    aurelia_framework_1.autoinject
+                    aurelia_framework_1.inject(gridster_item_1.GridsterItemComponent, gridster_1.GridsterComponent)
                 ], GridsterPushResize);
                 return GridsterPushResize;
             }());

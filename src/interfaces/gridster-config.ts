@@ -1,6 +1,3 @@
-import { GridsterComponent } from '../gridster';
-import { GridsterItem } from '../interfaces/gridster-item';
-import { GridsterItemComponent } from '../gridster-item';
 
 export type GridType = 'fit' | 'scrollVertical' | 'scrollHorizontal' | 'fixed' | 'verticalFixed' | 'horizontalFixed';
 export type displayGrid = 'always' | 'onDrag&Resize' | 'none';
@@ -30,11 +27,11 @@ export interface GridsterConfig {
   outerMargin?: boolean;
   scrollSensitivity?: number;
   scrollSpeed?: number;
-  initCallback?: (component: GridsterComponent) => void;
-  itemChangeCallback?: (item: GridsterItem, component: GridsterItemComponent) => void;
-  itemResizeCallback?: (item: GridsterItem, component: GridsterItemComponent) => void;
-  itemInitCallback?: (item: GridsterItem, component: GridsterItemComponent) => void;
-  itemRemovedCallback?: (item: GridsterItem, component: GridsterItemComponent) => void;
+  initCallback?: Function;
+  itemChangeCallback?: Function;
+  itemResizeCallback?: Function;
+  itemInitCallback?: Function;
+  itemRemovedCallback?: Function;
   draggable?: Draggable;
   resizable?: Resizable;
   swap?: boolean;
@@ -49,16 +46,16 @@ export interface GridsterConfig {
   enableEmptyCellContextMenu?: boolean;
   enableEmptyCellDrop?: boolean;
   enableEmptyCellDrag?: boolean;
-  emptyCellClickCallback?: (event: Event, item: GridsterItem) => void;
-  emptyCellContextMenuCallback?: (event: Event, item: GridsterItem) => void;
-  emptyCellDropCallback?: (event: Event, item: GridsterItem) => void;
-  emptyCellDragCallback?: (event: Event, item: GridsterItem) => void;
+  emptyCellClickCallback?: Function;
+  emptyCellContextMenuCallback?: Function;
+  emptyCellDropCallback?: Function;
+  emptyCellDragCallback?: Function;
   emptyCellDragMaxCols?: number;
   emptyCellDragMaxRows?: number;
   api?: {
-    resize?: () => void,
-    optionsChanged?: () => void,
-    getNextPossiblePosition?: (newItem: GridsterItem) => boolean,
+    resize?: Function,
+    optionsChanged?: Function,
+    getNextPossiblePosition?: Function,
   };
 
   [propName: string]: any;
@@ -85,8 +82,8 @@ export interface Resizable extends DragBase {
 
 export interface DragBase {
   enabled?: boolean;
-  stop?: (item: GridsterItem, component: GridsterItemComponent, event: Event) => void;
-  start?: (item: GridsterItem, component: GridsterItemComponent, event: Event) => void;
+  stop?: Function;
+  start?: Function;
   delayStart?: number;
 }
 

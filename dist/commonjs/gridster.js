@@ -11,6 +11,7 @@ var gridster_compact_1 = require("./services/gridster-compact");
 var gridster_config_1 = require("./services/gridster-config");
 var gridster_empty_cell_1 = require("./services/gridster-empty-cell");
 var gridster_utils_1 = require("./services/gridster-utils");
+var renderer_1 = require("./renderer");
 var GridsterComponent = /** @class */ (function () {
     function GridsterComponent(renderer) {
         this.renderer = renderer;
@@ -365,7 +366,7 @@ var GridsterComponent = /** @class */ (function () {
         aurelia_framework_1.bindable
     ], GridsterComponent.prototype, "options", void 0);
     GridsterComponent = GridsterComponent_1 = __decorate([
-        aurelia_framework_1.autoinject,
+        aurelia_framework_1.inject(renderer_1.Renderer),
         aurelia_framework_1.customElement('gridster')
     ], GridsterComponent);
     return GridsterComponent;

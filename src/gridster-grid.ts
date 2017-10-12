@@ -1,9 +1,9 @@
-import { autoinject, customElement } from 'aurelia-framework';
+import { customElement, inject } from 'aurelia-framework';
 
 import { GridsterComponent } from './gridster';
 import { Renderer } from './renderer';
 
-@autoinject
+@inject(GridsterComponent, Renderer)
 @customElement('gridster-grid')
 export class GridsterGridComponent {
   el: HTMLElement;

@@ -1,4 +1,4 @@
-System.register(["aurelia-framework"], function (exports_1, context_1) {
+System.register(["aurelia-framework", "./gridster", "./renderer"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,11 +7,17 @@ System.register(["aurelia-framework"], function (exports_1, context_1) {
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, GridsterPreviewComponent;
+    var aurelia_framework_1, gridster_1, renderer_1, GridsterPreviewComponent;
     return {
         setters: [
             function (aurelia_framework_1_1) {
                 aurelia_framework_1 = aurelia_framework_1_1;
+            },
+            function (gridster_1_1) {
+                gridster_1 = gridster_1_1;
+            },
+            function (renderer_1_1) {
+                renderer_1 = renderer_1_1;
             }
         ],
         execute: function () {
@@ -41,7 +47,7 @@ System.register(["aurelia-framework"], function (exports_1, context_1) {
                     }
                 };
                 GridsterPreviewComponent = __decorate([
-                    aurelia_framework_1.autoinject,
+                    aurelia_framework_1.inject(gridster_1.GridsterComponent, renderer_1.Renderer),
                     aurelia_framework_1.customElement('gridster-preview'),
                     aurelia_framework_1.inlineView('<template ref="el" class="gridster-preview"></template>')
                 ], GridsterPreviewComponent);

@@ -1,4 +1,4 @@
-import { Disposable, autoinject } from 'aurelia-framework';
+import { Disposable, inject } from 'aurelia-framework';
 import { cancelScroll, scroll } from './gridster-scroll';
 
 import { GridsterComponent } from '../gridster';
@@ -8,7 +8,7 @@ import { GridsterPushResize } from './gridster-push-resize';
 import { GridsterResizeEventType } from '../interfaces/gridster-resize-event-type';
 import { GridsterUtils } from './gridster-utils';
 
-@autoinject
+@inject(GridsterItemComponent, GridsterComponent)
 export class GridsterResizable {
   gridsterItem: GridsterItemComponent;
   gridster: GridsterComponent;

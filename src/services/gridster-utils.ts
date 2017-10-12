@@ -1,7 +1,5 @@
 import { GridsterComponent } from '../gridster';
-import { autoinject } from 'aurelia-framework';
 
-@autoinject
 export class GridsterUtils {
 
   static merge(obj1, obj2, properties) {

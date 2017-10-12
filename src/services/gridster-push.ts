@@ -1,8 +1,8 @@
 import { GridsterComponent } from '../gridster';
 import { GridsterItemComponent } from '../gridster-item';
-import { autoinject } from 'aurelia-framework';
+import { inject } from 'aurelia-framework';
 
-@autoinject
+@inject(GridsterItemComponent, GridsterComponent)
 export class GridsterPush {
   private pushedItems: Array<GridsterItemComponent>;
   private pushedItemsTemp: Array<GridsterItemComponent>;

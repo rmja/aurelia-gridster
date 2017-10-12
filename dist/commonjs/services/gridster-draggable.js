@@ -8,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var aurelia_framework_1 = require("aurelia-framework");
 var gridster_scroll_1 = require("./gridster-scroll");
+var gridster_1 = require("../gridster");
+var gridster_item_1 = require("../gridster-item");
 var gridster_push_1 = require("./gridster-push");
 var gridster_swap_1 = require("./gridster-swap");
 var gridster_utils_1 = require("./gridster-utils");
@@ -213,7 +215,7 @@ var GridsterDraggable = /** @class */ (function () {
         }
     };
     GridsterDraggable = __decorate([
-        aurelia_framework_1.autoinject
+        aurelia_framework_1.inject(gridster_item_1.GridsterItemComponent, gridster_1.GridsterComponent)
     ], GridsterDraggable);
     return GridsterDraggable;
 }());

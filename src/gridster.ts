@@ -1,4 +1,4 @@
-import { Disposable, autoinject, bindable, customElement } from 'aurelia-framework';
+import { Disposable, bindable, customElement, inject } from 'aurelia-framework';
 
 import { GridsterCompact } from './services/gridster-compact';
 import { GridsterConfig } from './interfaces/gridster-config';
@@ -10,7 +10,7 @@ import { GridsterItemComponent } from './gridster-item';
 import { GridsterUtils } from './services/gridster-utils';
 import { Renderer } from './renderer';
 
-@autoinject
+@inject(Renderer)
 @customElement('gridster')
 export class GridsterComponent {
   @bindable options: GridsterConfig;

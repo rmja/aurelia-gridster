@@ -5,7 +5,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { GridsterComponent } from '../gridster';
-import { autoinject } from 'aurelia-framework';
+import { GridsterItemComponent } from '../gridster-item';
+import { inject } from 'aurelia-framework';
 let GridsterPushResize = class GridsterPushResize {
     constructor(gridsterItem, gridster) {
         this.pushedItems = [];
@@ -212,6 +213,6 @@ let GridsterPushResize = class GridsterPushResize {
     }
 };
 GridsterPushResize = __decorate([
-    autoinject
+    inject(GridsterItemComponent, GridsterComponent)
 ], GridsterPushResize);
 export { GridsterPushResize };

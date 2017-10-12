@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var gridster_1 = require("../gridster");
 var aurelia_framework_1 = require("aurelia-framework");
 var GridsterCompact = /** @class */ (function () {
     function GridsterCompact(gridster) {
@@ -86,7 +87,7 @@ var GridsterCompact = /** @class */ (function () {
         }
     };
     GridsterCompact = __decorate([
-        aurelia_framework_1.autoinject
+        aurelia_framework_1.inject(gridster_1.GridsterComponent)
     ], GridsterCompact);
     return GridsterCompact;
 }());

@@ -4,10 +4,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { autoinject, bindable, customElement } from 'aurelia-framework';
+import { bindable, customElement, inject } from 'aurelia-framework';
+import { GridsterComponent } from './gridster';
 import { GridsterDraggable } from './services/gridster-draggable';
 import { GridsterResizable } from './services/gridster-resizable';
 import { GridsterUtils } from './services/gridster-utils';
+import { Renderer } from './renderer';
 let GridsterItemComponent = class GridsterItemComponent {
     constructor(gridster, renderer) {
         this.renderer = renderer;
@@ -141,7 +143,7 @@ __decorate([
     bindable
 ], GridsterItemComponent.prototype, "itemResize", void 0);
 GridsterItemComponent = __decorate([
-    autoinject,
+    inject(GridsterComponent, Renderer),
     customElement('gridster-item')
 ], GridsterItemComponent);
 export { GridsterItemComponent };

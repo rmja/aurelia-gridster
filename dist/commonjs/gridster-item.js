@@ -7,9 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var aurelia_framework_1 = require("aurelia-framework");
+var gridster_1 = require("./gridster");
 var gridster_draggable_1 = require("./services/gridster-draggable");
 var gridster_resizable_1 = require("./services/gridster-resizable");
 var gridster_utils_1 = require("./services/gridster-utils");
+var renderer_1 = require("./renderer");
 var GridsterItemComponent = /** @class */ (function () {
     function GridsterItemComponent(gridster, renderer) {
         this.renderer = renderer;
@@ -142,7 +144,7 @@ var GridsterItemComponent = /** @class */ (function () {
         aurelia_framework_1.bindable
     ], GridsterItemComponent.prototype, "itemResize", void 0);
     GridsterItemComponent = __decorate([
-        aurelia_framework_1.autoinject,
+        aurelia_framework_1.inject(gridster_1.GridsterComponent, renderer_1.Renderer),
         aurelia_framework_1.customElement('gridster-item')
     ], GridsterItemComponent);
     return GridsterItemComponent;

@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "aurelia-framework", "./services/gridster-compact", "./services/gridster-config", "./services/gridster-empty-cell", "./services/gridster-utils"], function (require, exports, aurelia_framework_1, gridster_compact_1, gridster_config_1, gridster_empty_cell_1, gridster_utils_1) {
+define(["require", "exports", "aurelia-framework", "./services/gridster-compact", "./services/gridster-config", "./services/gridster-empty-cell", "./services/gridster-utils", "./renderer"], function (require, exports, aurelia_framework_1, gridster_compact_1, gridster_config_1, gridster_empty_cell_1, gridster_utils_1, renderer_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var GridsterComponent = /** @class */ (function () {
@@ -361,7 +361,7 @@ define(["require", "exports", "aurelia-framework", "./services/gridster-compact"
             aurelia_framework_1.bindable
         ], GridsterComponent.prototype, "options", void 0);
         GridsterComponent = GridsterComponent_1 = __decorate([
-            aurelia_framework_1.autoinject,
+            aurelia_framework_1.inject(renderer_1.Renderer),
             aurelia_framework_1.customElement('gridster')
         ], GridsterComponent);
         return GridsterComponent;

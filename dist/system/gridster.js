@@ -1,4 +1,4 @@
-System.register(["aurelia-framework", "./services/gridster-compact", "./services/gridster-config", "./services/gridster-empty-cell", "./services/gridster-utils"], function (exports_1, context_1) {
+System.register(["aurelia-framework", "./services/gridster-compact", "./services/gridster-config", "./services/gridster-empty-cell", "./services/gridster-utils", "./renderer"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, gridster_compact_1, gridster_config_1, gridster_empty_cell_1, gridster_utils_1, GridsterComponent;
+    var aurelia_framework_1, gridster_compact_1, gridster_config_1, gridster_empty_cell_1, gridster_utils_1, renderer_1, GridsterComponent;
     return {
         setters: [
             function (aurelia_framework_1_1) {
@@ -24,6 +24,9 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
             },
             function (gridster_utils_1_1) {
                 gridster_utils_1 = gridster_utils_1_1;
+            },
+            function (renderer_1_1) {
+                renderer_1 = renderer_1_1;
             }
         ],
         execute: function () {
@@ -381,7 +384,7 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                     aurelia_framework_1.bindable
                 ], GridsterComponent.prototype, "options", void 0);
                 GridsterComponent = GridsterComponent_1 = __decorate([
-                    aurelia_framework_1.autoinject,
+                    aurelia_framework_1.inject(renderer_1.Renderer),
                     aurelia_framework_1.customElement('gridster')
                 ], GridsterComponent);
                 return GridsterComponent;
