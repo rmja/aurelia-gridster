@@ -10,7 +10,7 @@ System.register(["./gridster", "./renderer", "aurelia-dependency-injection", "au
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var gridster_1, renderer_1, aurelia_dependency_injection_1, aurelia_templating_1, GridsterPreviewComponent;
+    var gridster_1, renderer_1, aurelia_dependency_injection_1, aurelia_templating_1, GridsterPreviewCustomElement;
     return {
         setters: [
             function (gridster_1_1) {
@@ -27,13 +27,13 @@ System.register(["./gridster", "./renderer", "aurelia-dependency-injection", "au
             }
         ],
         execute: function () {
-            GridsterPreviewComponent = /** @class */ (function () {
-                function GridsterPreviewComponent(gridster, renderer) {
+            GridsterPreviewCustomElement = /** @class */ (function () {
+                function GridsterPreviewCustomElement(gridster, renderer) {
                     this.gridster = gridster;
                     this.renderer = renderer;
                     this.gridster.previewStyle = this.previewStyle.bind(this);
                 }
-                GridsterPreviewComponent.prototype.previewStyle = function () {
+                GridsterPreviewCustomElement.prototype.previewStyle = function () {
                     if (!this.gridster.movingItem) {
                         this.renderer.setStyle(this.el, 'display', 'none');
                     }
@@ -52,14 +52,14 @@ System.register(["./gridster", "./renderer", "aurelia-dependency-injection", "au
                         this.renderer.setStyle(this.el, 'marginBottom', margin + 'px');
                     }
                 };
-                GridsterPreviewComponent = __decorate([
+                GridsterPreviewCustomElement = __decorate([
                     aurelia_dependency_injection_1.autoinject,
                     aurelia_templating_1.inlineView('<template ref="el" class="gridster-preview"></template>'),
                     __metadata("design:paramtypes", [gridster_1.GridsterCustomElement, renderer_1.Renderer])
-                ], GridsterPreviewComponent);
-                return GridsterPreviewComponent;
+                ], GridsterPreviewCustomElement);
+                return GridsterPreviewCustomElement;
             }());
-            exports_1("GridsterPreviewComponent", GridsterPreviewComponent);
+            exports_1("GridsterPreviewCustomElement", GridsterPreviewCustomElement);
         }
     };
 });

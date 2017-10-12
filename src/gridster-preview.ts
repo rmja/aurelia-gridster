@@ -5,7 +5,7 @@ import { inlineView } from 'aurelia-templating';
 
 @autoinject
 @inlineView('<template ref="el" class="gridster-preview"></template>')
-export class GridsterPreviewComponent {
+export class GridsterPreviewCustomElement {
   el: HTMLElement;
 
   constructor(private gridster: GridsterCustomElement, public renderer: Renderer) {

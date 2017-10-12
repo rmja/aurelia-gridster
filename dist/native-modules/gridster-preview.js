@@ -11,13 +11,13 @@ import { GridsterCustomElement } from './gridster';
 import { Renderer } from './renderer';
 import { autoinject } from 'aurelia-dependency-injection';
 import { inlineView } from 'aurelia-templating';
-var GridsterPreviewComponent = /** @class */ (function () {
-    function GridsterPreviewComponent(gridster, renderer) {
+var GridsterPreviewCustomElement = /** @class */ (function () {
+    function GridsterPreviewCustomElement(gridster, renderer) {
         this.gridster = gridster;
         this.renderer = renderer;
         this.gridster.previewStyle = this.previewStyle.bind(this);
     }
-    GridsterPreviewComponent.prototype.previewStyle = function () {
+    GridsterPreviewCustomElement.prototype.previewStyle = function () {
         if (!this.gridster.movingItem) {
             this.renderer.setStyle(this.el, 'display', 'none');
         }
@@ -36,11 +36,11 @@ var GridsterPreviewComponent = /** @class */ (function () {
             this.renderer.setStyle(this.el, 'marginBottom', margin + 'px');
         }
     };
-    GridsterPreviewComponent = __decorate([
+    GridsterPreviewCustomElement = __decorate([
         autoinject,
         inlineView('<template ref="el" class="gridster-preview"></template>'),
         __metadata("design:paramtypes", [GridsterCustomElement, Renderer])
-    ], GridsterPreviewComponent);
-    return GridsterPreviewComponent;
+    ], GridsterPreviewCustomElement);
+    return GridsterPreviewCustomElement;
 }());
-export { GridsterPreviewComponent };
+export { GridsterPreviewCustomElement };

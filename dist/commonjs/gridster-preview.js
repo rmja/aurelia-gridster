@@ -13,13 +13,13 @@ var gridster_1 = require("./gridster");
 var renderer_1 = require("./renderer");
 var aurelia_dependency_injection_1 = require("aurelia-dependency-injection");
 var aurelia_templating_1 = require("aurelia-templating");
-var GridsterPreviewComponent = /** @class */ (function () {
-    function GridsterPreviewComponent(gridster, renderer) {
+var GridsterPreviewCustomElement = /** @class */ (function () {
+    function GridsterPreviewCustomElement(gridster, renderer) {
         this.gridster = gridster;
         this.renderer = renderer;
         this.gridster.previewStyle = this.previewStyle.bind(this);
     }
-    GridsterPreviewComponent.prototype.previewStyle = function () {
+    GridsterPreviewCustomElement.prototype.previewStyle = function () {
         if (!this.gridster.movingItem) {
             this.renderer.setStyle(this.el, 'display', 'none');
         }
@@ -38,11 +38,11 @@ var GridsterPreviewComponent = /** @class */ (function () {
             this.renderer.setStyle(this.el, 'marginBottom', margin + 'px');
         }
     };
-    GridsterPreviewComponent = __decorate([
+    GridsterPreviewCustomElement = __decorate([
         aurelia_dependency_injection_1.autoinject,
         aurelia_templating_1.inlineView('<template ref="el" class="gridster-preview"></template>'),
         __metadata("design:paramtypes", [gridster_1.GridsterCustomElement, renderer_1.Renderer])
-    ], GridsterPreviewComponent);
-    return GridsterPreviewComponent;
+    ], GridsterPreviewCustomElement);
+    return GridsterPreviewCustomElement;
 }());
-exports.GridsterPreviewComponent = GridsterPreviewComponent;
+exports.GridsterPreviewCustomElement = GridsterPreviewCustomElement;

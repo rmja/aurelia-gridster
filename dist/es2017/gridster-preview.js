@@ -11,7 +11,7 @@ import { GridsterCustomElement } from './gridster';
 import { Renderer } from './renderer';
 import { autoinject } from 'aurelia-dependency-injection';
 import { inlineView } from 'aurelia-templating';
-let GridsterPreviewComponent = class GridsterPreviewComponent {
+let GridsterPreviewCustomElement = class GridsterPreviewCustomElement {
     constructor(gridster, renderer) {
         this.gridster = gridster;
         this.renderer = renderer;
@@ -37,9 +37,9 @@ let GridsterPreviewComponent = class GridsterPreviewComponent {
         }
     }
 };
-GridsterPreviewComponent = __decorate([
+GridsterPreviewCustomElement = __decorate([
     autoinject,
     inlineView('<template ref="el" class="gridster-preview"></template>'),
     __metadata("design:paramtypes", [GridsterCustomElement, Renderer])
-], GridsterPreviewComponent);
-export { GridsterPreviewComponent };
+], GridsterPreviewCustomElement);
+export { GridsterPreviewCustomElement };
