@@ -1,12 +1,12 @@
-import { Disposable } from 'aurelia-framework';
+import { Disposable } from 'aurelia-binding';
 import { GridsterCompact } from './services/gridster-compact';
 import { GridsterConfig } from './interfaces/gridster-config';
 import { GridsterEmptyCell } from './services/gridster-empty-cell';
-import { GridsterGridComponent } from './gridster-grid';
+import { GridsterGridCustomElement } from './gridster-grid';
 import { GridsterItem } from './interfaces/gridster-item';
-import { GridsterItemComponent } from './gridster-item';
+import { GridsterItemCustomElement } from './gridster-item';
 import { Renderer } from './renderer';
-export declare class GridsterComponent {
+export declare class GridsterCustomElement {
     renderer: Renderer;
     options: GridsterConfig;
     calculateLayoutDebounce: Function;
@@ -17,13 +17,13 @@ export declare class GridsterComponent {
     mobile: boolean;
     curWidth: number;
     curHeight: number;
-    grid: Array<GridsterItemComponent>;
+    grid: Array<GridsterItemCustomElement>;
     columns: number;
     rows: number;
     curColWidth: number;
     curRowHeight: number;
     windowResize: Disposable | null;
-    gridLines: GridsterGridComponent;
+    gridLines: GridsterGridCustomElement;
     dragInProgress: boolean;
     emptyCell: GridsterEmptyCell;
     compact: GridsterCompact;
@@ -39,13 +39,13 @@ export declare class GridsterComponent {
     setGridSize(): void;
     setGridDimensions(): void;
     calculateLayout(): void;
-    addItem(itemComponent: GridsterItemComponent): void;
-    removeItem(itemComponent: GridsterItemComponent): void;
-    checkCollision(item: GridsterItem): GridsterItemComponent | boolean;
+    addItem(itemComponent: GridsterItemCustomElement): void;
+    removeItem(itemComponent: GridsterItemCustomElement): void;
+    checkCollision(item: GridsterItem): GridsterItemCustomElement | boolean;
     checkGridCollision(item: GridsterItem): boolean;
-    findItemWithItem(item: GridsterItem): GridsterItemComponent | boolean;
-    findItemsWithItem(item: GridsterItem): Array<GridsterItemComponent>;
-    autoPositionItem(itemComponent: GridsterItemComponent): void;
+    findItemWithItem(item: GridsterItem): GridsterItemCustomElement | boolean;
+    findItemsWithItem(item: GridsterItem): Array<GridsterItemCustomElement>;
+    autoPositionItem(itemComponent: GridsterItemCustomElement): void;
     getNextPossiblePosition(newItem: GridsterItem): boolean;
     pixelsToPosition(x: number, y: number, roundingMethod: Function): [number, number];
     pixelsToPositionX(x: number, roundingMethod: Function): number;

@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "./gridster-scroll", "../gridster", "../gridster-item", "./gridster-push", "./gridster-push-resize", "./gridster-utils"], function (require, exports, aurelia_framework_1, gridster_scroll_1, gridster_1, gridster_item_1, gridster_push_1, gridster_push_resize_1, gridster_utils_1) {
+define(["require", "exports", "./gridster-scroll", "../gridster", "../gridster-item", "./gridster-push", "./gridster-push-resize", "./gridster-utils", "aurelia-dependency-injection"], function (require, exports, gridster_scroll_1, gridster_1, gridster_item_1, gridster_push_1, gridster_push_resize_1, gridster_utils_1, aurelia_dependency_injection_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var GridsterResizable = /** @class */ (function () {
@@ -322,8 +322,8 @@ define(["require", "exports", "aurelia-framework", "./gridster-scroll", "../grid
             }
         };
         GridsterResizable = __decorate([
-            aurelia_framework_1.autoinject,
-            __metadata("design:paramtypes", [gridster_item_1.GridsterItemComponent, gridster_1.GridsterComponent])
+            aurelia_dependency_injection_1.autoinject,
+            __metadata("design:paramtypes", [gridster_item_1.GridsterItemCustomElement, gridster_1.GridsterCustomElement])
         ], GridsterResizable);
         return GridsterResizable;
     }());

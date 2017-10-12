@@ -1,11 +1,9 @@
-import { autoinject, customElement } from 'aurelia-framework';
-
-import { GridsterComponent } from './gridster';
+import { GridsterCustomElement } from './gridster';
 import { Renderer } from './renderer';
+import { autoinject } from 'aurelia-dependency-injection';
 
 @autoinject
-@customElement('gridster-grid')
-export class GridsterGridComponent {
+export class GridsterGridCustomElement {
   el: HTMLElement;
   columns: number;
   rows: number;
@@ -15,7 +13,7 @@ export class GridsterGridComponent {
   columnsHeight: number;
   rowsWidth: number;
 
-  constructor(private gridster: GridsterComponent, public renderer: Renderer) {
+  constructor(private gridster: GridsterCustomElement, public renderer: Renderer) {
     this.gridster.gridLines = this;
     this.columns = 0;
     this.rows = 0;

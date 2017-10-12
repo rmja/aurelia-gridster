@@ -1,10 +1,10 @@
-import { GridsterComponent } from '../gridster';
-import { GridsterItemComponent } from '../gridster-item';
-import { autoinject } from 'aurelia-framework';
+import { GridsterCustomElement } from '../gridster';
+import { GridsterItemCustomElement } from '../gridster-item';
+import { autoinject } from 'aurelia-dependency-injection';
 
 @autoinject
 export class GridsterCompact {
-  constructor(private gridster: GridsterComponent) {
+  constructor(private gridster: GridsterCustomElement) {
   }
 
   checkCompact(): void {
@@ -24,7 +24,7 @@ export class GridsterCompact {
   }
 
   checkCompactUp(): boolean {
-    let widgetMovedUp = false, widget: GridsterItemComponent, moved: boolean;
+    let widgetMovedUp = false, widget: GridsterItemCustomElement, moved: boolean;
     const l = this.gridster.grid.length;
     for (let i = 0; i < l; i++) {
       widget = this.gridster.grid[i];
@@ -41,7 +41,7 @@ export class GridsterCompact {
     return widgetMovedUp;
   }
 
-  moveUpTillCollision(itemComponent: GridsterItemComponent): boolean {
+  moveUpTillCollision(itemComponent: GridsterItemCustomElement): boolean {
     itemComponent.$item.y -= 1;
     if (this.gridster.checkCollision(itemComponent.$item)) {
       itemComponent.$item.y += 1;
@@ -53,7 +53,7 @@ export class GridsterCompact {
   }
 
   checkCompactLeft(): boolean {
-    let widgetMovedUp = false, widget: GridsterItemComponent, moved: boolean;
+    let widgetMovedUp = false, widget: GridsterItemCustomElement, moved: boolean;
     const l = this.gridster.grid.length;
     for (let i = 0; i < l; i++) {
       widget = this.gridster.grid[i];
@@ -70,7 +70,7 @@ export class GridsterCompact {
     return widgetMovedUp;
   }
 
-  moveLeftTillCollision(itemComponent: GridsterItemComponent): boolean {
+  moveLeftTillCollision(itemComponent: GridsterItemCustomElement): boolean {
     itemComponent.$item.x -= 1;
     if (this.gridster.checkCollision(itemComponent.$item)) {
       itemComponent.$item.x += 1;

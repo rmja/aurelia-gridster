@@ -1,4 +1,4 @@
-import { Disposable } from 'aurelia-framework';
+import { Disposable } from 'aurelia-binding';
 
 export class Renderer {
   listen(target: 'document' | 'window' | EventTarget, type: string, listener: EventListenerOrEventListenerObject): Disposable {

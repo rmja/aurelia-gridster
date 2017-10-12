@@ -7,8 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { GridsterComponent } from '../gridster';
-import { autoinject } from 'aurelia-framework';
+import { GridsterCustomElement } from '../gridster';
+import { autoinject } from 'aurelia-dependency-injection';
 var GridsterCompact = /** @class */ (function () {
     function GridsterCompact(gridster) {
         this.gridster = gridster;
@@ -89,7 +89,7 @@ var GridsterCompact = /** @class */ (function () {
     };
     GridsterCompact = __decorate([
         autoinject,
-        __metadata("design:paramtypes", [GridsterComponent])
+        __metadata("design:paramtypes", [GridsterCustomElement])
     ], GridsterCompact);
     return GridsterCompact;
 }());

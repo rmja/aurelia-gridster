@@ -1,8 +1,8 @@
-import { Disposable, autoinject } from 'aurelia-framework';
-
-import { GridsterComponent } from '../gridster';
+import { Disposable } from 'aurelia-binding';
+import { GridsterCustomElement } from '../gridster';
 import { GridsterItem } from '../interfaces/gridster-item';
 import { GridsterUtils } from './gridster-utils';
+import { autoinject } from 'aurelia-dependency-injection';
 
 @autoinject
 export class GridsterEmptyCell {
@@ -15,7 +15,7 @@ export class GridsterEmptyCell {
   emptyCellUp: Disposable;
   emptyCellMove: Disposable | null;
 
-  constructor(private gridster: GridsterComponent) {
+  constructor(private gridster: GridsterCustomElement) {
   }
 
   updateOptions(): void {

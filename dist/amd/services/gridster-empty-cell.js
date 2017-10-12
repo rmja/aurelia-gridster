@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "../gridster", "./gridster-utils"], function (require, exports, aurelia_framework_1, gridster_1, gridster_utils_1) {
+define(["require", "exports", "../gridster", "./gridster-utils", "aurelia-dependency-injection"], function (require, exports, gridster_1, gridster_utils_1, aurelia_dependency_injection_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var GridsterEmptyCell = /** @class */ (function () {
@@ -161,8 +161,8 @@ define(["require", "exports", "aurelia-framework", "../gridster", "./gridster-ut
             return item;
         };
         GridsterEmptyCell = __decorate([
-            aurelia_framework_1.autoinject,
-            __metadata("design:paramtypes", [gridster_1.GridsterComponent])
+            aurelia_dependency_injection_1.autoinject,
+            __metadata("design:paramtypes", [gridster_1.GridsterCustomElement])
         ], GridsterEmptyCell);
         return GridsterEmptyCell;
     }());

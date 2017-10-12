@@ -1,23 +1,23 @@
-import { GridsterComponent } from '../gridster';
-import { GridsterItemComponent } from '../gridster-item';
-import { autoinject } from 'aurelia-framework';
+import { GridsterCustomElement } from '../gridster';
+import { GridsterItemCustomElement } from '../gridster-item';
+import { autoinject } from 'aurelia-dependency-injection';
 
 @autoinject
 export class GridsterPush {
-  private pushedItems: Array<GridsterItemComponent>;
-  private pushedItemsTemp: Array<GridsterItemComponent>;
+  private pushedItems: Array<GridsterItemCustomElement>;
+  private pushedItemsTemp: Array<GridsterItemCustomElement>;
   private pushedItemsTempInit: Array<{ x: number, y: number }>;
   private count: number;
   private pushedItemsPath: Array<Array<{ x: number, y: number }>>;
-  private gridsterItem: GridsterItemComponent;
-  private gridster: GridsterComponent;
+  private gridsterItem: GridsterItemCustomElement;
+  private gridster: GridsterCustomElement;
   private tryPattern: Object;
   public fromSouth: string;
   public fromNorth: string;
   public fromEast: string;
   public fromWest: string;
 
-  constructor(gridsterItem: GridsterItemComponent, gridster: GridsterComponent) {
+  constructor(gridsterItem: GridsterItemCustomElement, gridster: GridsterCustomElement) {
     this.pushedItems = [];
     this.pushedItemsTemp = [];
     this.pushedItemsTempInit = [];
@@ -52,7 +52,7 @@ export class GridsterPush {
   restoreItems(): void {
     let i = 0;
     const l: number = this.pushedItems.length;
-    let pushedItem: GridsterItemComponent;
+    let pushedItem: GridsterItemCustomElement;
     for (; i < l; i++) {
       pushedItem = this.pushedItems[i];
       pushedItem.$item.x = pushedItem.item.x || 0;
@@ -66,7 +66,7 @@ export class GridsterPush {
   setPushedItems() {
     let i = 0;
     const l: number = this.pushedItems.length;
-    let pushedItem: GridsterItemComponent;
+    let pushedItem: GridsterItemCustomElement;
     for (; i < l; i++) {
       pushedItem = this.pushedItems[i];
       pushedItem.checkItemChanges(pushedItem.$item, pushedItem.item);
@@ -75,7 +75,7 @@ export class GridsterPush {
     this.pushedItemsPath = [];
   }
 
-  private push(gridsterItem: GridsterItemComponent, direction: string): boolean {
+  private push(gridsterItem: GridsterItemCustomElement, direction: string): boolean {
     if (this.count > 3000) {
       return false;
     } else {
@@ -84,8 +84,8 @@ export class GridsterPush {
     if (this.gridster.checkGridCollision(gridsterItem.$item)) {
       return false;
     }
-    const a: Array<GridsterItemComponent> = this.gridster.findItemsWithItem(gridsterItem.$item);
-    let i = a.length - 1, itemColision: GridsterItemComponent;
+    const a: Array<GridsterItemCustomElement> = this.gridster.findItemsWithItem(gridsterItem.$item);
+    let i = a.length - 1, itemColision: GridsterItemCustomElement;
     let makePush = true;
     for (; i > -1; i--) {
       itemColision = a[i];
@@ -109,7 +109,7 @@ export class GridsterPush {
     return makePush;
   }
 
-  private trySouth(gridsterItemCollide: GridsterItemComponent, gridsterItem: GridsterItemComponent): boolean {
+  private trySouth(gridsterItemCollide: GridsterItemCustomElement, gridsterItem: GridsterItemCustomElement): boolean {
     if (!this.gridster.$options.pushDirections.south) {
       return false;
     }
@@ -126,7 +126,7 @@ export class GridsterPush {
     return false;
   }
 
-  private tryNorth(gridsterItemCollide: GridsterItemComponent, gridsterItem: GridsterItemComponent): boolean {
+  private tryNorth(gridsterItemCollide: GridsterItemCustomElement, gridsterItem: GridsterItemCustomElement): boolean {
     if (!this.gridster.$options.pushDirections.north) {
       return false;
     }
@@ -143,7 +143,7 @@ export class GridsterPush {
     return false;
   }
 
-  private tryEast(gridsterItemCollide: GridsterItemComponent, gridsterItem: GridsterItemComponent): boolean {
+  private tryEast(gridsterItemCollide: GridsterItemCustomElement, gridsterItem: GridsterItemCustomElement): boolean {
     if (!this.gridster.$options.pushDirections.east) {
       return false;
     }
@@ -160,7 +160,7 @@ export class GridsterPush {
     return false;
   }
 
-  private tryWest(gridsterItemCollide: GridsterItemComponent, gridsterItem: GridsterItemComponent): boolean {
+  private tryWest(gridsterItemCollide: GridsterItemCustomElement, gridsterItem: GridsterItemCustomElement): boolean {
     if (!this.gridster.$options.pushDirections.west) {
       return false;
     }
@@ -177,7 +177,7 @@ export class GridsterPush {
     return false;
   }
 
-  private addToTempPushed(gridsterItem: GridsterItemComponent): void {
+  private addToTempPushed(gridsterItem: GridsterItemCustomElement): void {
     if (this.checkInTempPushed(gridsterItem)) {
       return;
     }
@@ -185,7 +185,7 @@ export class GridsterPush {
     this.pushedItemsTempInit[l - 1] = { x: gridsterItem.$item.x, y: gridsterItem.$item.y };
   }
 
-  private removeFromTempPushed(gridsterItem: GridsterItemComponent): void {
+  private removeFromTempPushed(gridsterItem: GridsterItemCustomElement): void {
     const i = this.pushedItemsTemp.indexOf(gridsterItem);
     this.pushedItemsTemp.splice(i, 1);
     const initPosition = this.pushedItemsTempInit[i];
@@ -195,11 +195,11 @@ export class GridsterPush {
     this.pushedItemsTempInit.splice(i, 1);
   }
 
-  private checkInTempPushed(gridsterItem: GridsterItemComponent): boolean {
+  private checkInTempPushed(gridsterItem: GridsterItemCustomElement): boolean {
     return this.pushedItemsTemp.indexOf(gridsterItem) > -1;
   }
 
-  private addToPushed(gridsterItem: GridsterItemComponent): void {
+  private addToPushed(gridsterItem: GridsterItemCustomElement): void {
     if (this.pushedItems.indexOf(gridsterItem) < 0) {
       this.pushedItems.push(gridsterItem);
       this.pushedItemsPath.push([{ x: gridsterItem.item.x || 0, y: gridsterItem.item.y || 0 },
@@ -230,7 +230,7 @@ export class GridsterPush {
     }
   }
 
-  private checkPushedItem(pushedItem: GridsterItemComponent, i: number): boolean {
+  private checkPushedItem(pushedItem: GridsterItemCustomElement, i: number): boolean {
     const path = this.pushedItemsPath[i];
     let j = path.length - 2;
     let lastPosition, x, y;

@@ -1,4 +1,4 @@
-System.register(["../gridster", "../gridster-item", "aurelia-framework"], function (exports_1, context_1) {
+System.register(["../gridster", "../gridster-item", "aurelia-dependency-injection"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["../gridster", "../gridster-item", "aurelia-framework"], functi
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var gridster_1, gridster_item_1, aurelia_framework_1, GridsterPush;
+    var gridster_1, gridster_item_1, aurelia_dependency_injection_1, GridsterPush;
     return {
         setters: [
             function (gridster_1_1) {
@@ -19,8 +19,8 @@ System.register(["../gridster", "../gridster-item", "aurelia-framework"], functi
             function (gridster_item_1_1) {
                 gridster_item_1 = gridster_item_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
+            function (aurelia_dependency_injection_1_1) {
+                aurelia_dependency_injection_1 = aurelia_dependency_injection_1_1;
             }
         ],
         execute: function () {
@@ -260,8 +260,8 @@ System.register(["../gridster", "../gridster-item", "aurelia-framework"], functi
                     return change;
                 };
                 GridsterPush = __decorate([
-                    aurelia_framework_1.autoinject,
-                    __metadata("design:paramtypes", [gridster_item_1.GridsterItemComponent, gridster_1.GridsterComponent])
+                    aurelia_dependency_injection_1.autoinject,
+                    __metadata("design:paramtypes", [gridster_item_1.GridsterItemCustomElement, gridster_1.GridsterCustomElement])
                 ], GridsterPush);
                 return GridsterPush;
             }());

@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "./gridster", "./renderer"], function (require, exports, aurelia_framework_1, gridster_1, renderer_1) {
+define(["require", "exports", "./gridster", "./renderer", "aurelia-dependency-injection", "aurelia-templating"], function (require, exports, gridster_1, renderer_1, aurelia_dependency_injection_1, aurelia_templating_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var GridsterPreviewComponent = /** @class */ (function () {
@@ -36,10 +36,9 @@ define(["require", "exports", "aurelia-framework", "./gridster", "./renderer"], 
             }
         };
         GridsterPreviewComponent = __decorate([
-            aurelia_framework_1.autoinject,
-            aurelia_framework_1.customElement('gridster-preview'),
-            aurelia_framework_1.inlineView('<template ref="el" class="gridster-preview"></template>'),
-            __metadata("design:paramtypes", [gridster_1.GridsterComponent, renderer_1.Renderer])
+            aurelia_dependency_injection_1.autoinject,
+            aurelia_templating_1.inlineView('<template ref="el" class="gridster-preview"></template>'),
+            __metadata("design:paramtypes", [gridster_1.GridsterCustomElement, renderer_1.Renderer])
         ], GridsterPreviewComponent);
         return GridsterPreviewComponent;
     }());

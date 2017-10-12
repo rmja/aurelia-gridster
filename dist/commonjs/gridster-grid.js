@@ -9,11 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var aurelia_framework_1 = require("aurelia-framework");
 var gridster_1 = require("./gridster");
 var renderer_1 = require("./renderer");
-var GridsterGridComponent = /** @class */ (function () {
-    function GridsterGridComponent(gridster, renderer) {
+var aurelia_dependency_injection_1 = require("aurelia-dependency-injection");
+var GridsterGridCustomElement = /** @class */ (function () {
+    function GridsterGridCustomElement(gridster, renderer) {
         this.gridster = gridster;
         this.renderer = renderer;
         this.gridster.gridLines = this;
@@ -24,7 +24,7 @@ var GridsterGridComponent = /** @class */ (function () {
         this.columnsHeight = 0;
         this.rowsWidth = 0;
     }
-    GridsterGridComponent.prototype.updateGrid = function () {
+    GridsterGridCustomElement.prototype.updateGrid = function () {
         if (this.gridster.$options.displayGrid === 'always' && !this.gridster.mobile) {
             this.renderer.setStyle(this.el, 'display', 'block');
         }
@@ -43,11 +43,10 @@ var GridsterGridComponent = /** @class */ (function () {
         this.columnsHeight = this.gridster.curRowHeight * this.rows;
         this.rowsWidth = this.gridster.curColWidth * this.columns;
     };
-    GridsterGridComponent = __decorate([
-        aurelia_framework_1.autoinject,
-        aurelia_framework_1.customElement('gridster-grid'),
-        __metadata("design:paramtypes", [gridster_1.GridsterComponent, renderer_1.Renderer])
-    ], GridsterGridComponent);
-    return GridsterGridComponent;
+    GridsterGridCustomElement = __decorate([
+        aurelia_dependency_injection_1.autoinject,
+        __metadata("design:paramtypes", [gridster_1.GridsterCustomElement, renderer_1.Renderer])
+    ], GridsterGridCustomElement);
+    return GridsterGridCustomElement;
 }());
-exports.GridsterGridComponent = GridsterGridComponent;
+exports.GridsterGridCustomElement = GridsterGridCustomElement;

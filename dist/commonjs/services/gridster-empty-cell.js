@@ -9,9 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var aurelia_framework_1 = require("aurelia-framework");
 var gridster_1 = require("../gridster");
 var gridster_utils_1 = require("./gridster-utils");
+var aurelia_dependency_injection_1 = require("aurelia-dependency-injection");
 var GridsterEmptyCell = /** @class */ (function () {
     function GridsterEmptyCell(gridster) {
         this.gridster = gridster;
@@ -163,8 +163,8 @@ var GridsterEmptyCell = /** @class */ (function () {
         return item;
     };
     GridsterEmptyCell = __decorate([
-        aurelia_framework_1.autoinject,
-        __metadata("design:paramtypes", [gridster_1.GridsterComponent])
+        aurelia_dependency_injection_1.autoinject,
+        __metadata("design:paramtypes", [gridster_1.GridsterCustomElement])
     ], GridsterEmptyCell);
     return GridsterEmptyCell;
 }());

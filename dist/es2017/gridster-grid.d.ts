@@ -1,6 +1,6 @@
-import { GridsterComponent } from './gridster';
+import { GridsterCustomElement } from './gridster';
 import { Renderer } from './renderer';
-export declare class GridsterGridComponent {
+export declare class GridsterGridCustomElement {
     private gridster;
     renderer: Renderer;
     el: HTMLElement;
@@ -11,6 +11,6 @@ export declare class GridsterGridComponent {
     margin: number;
     columnsHeight: number;
     rowsWidth: number;
-    constructor(gridster: GridsterComponent, renderer: Renderer);
+    constructor(gridster: GridsterCustomElement, renderer: Renderer);
     updateGrid(): void;
 }

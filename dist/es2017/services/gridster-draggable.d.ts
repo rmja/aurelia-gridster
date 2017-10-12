@@ -1,11 +1,11 @@
-import { Disposable } from 'aurelia-framework';
-import { GridsterComponent } from '../gridster';
-import { GridsterItemComponent } from '../gridster-item';
+import { Disposable } from 'aurelia-binding';
+import { GridsterCustomElement } from '../gridster';
+import { GridsterItemCustomElement } from '../gridster-item';
 import { GridsterPush } from './gridster-push';
 import { GridsterSwap } from './gridster-swap';
 export declare class GridsterDraggable {
-    gridsterItem: GridsterItemComponent;
-    gridster: GridsterComponent;
+    gridsterItem: GridsterItemCustomElement;
+    gridster: GridsterCustomElement;
     lastMouse: {
         clientX: number;
         clientY: number;
@@ -40,7 +40,7 @@ export declare class GridsterDraggable {
         x: number;
         y: number;
     }>;
-    constructor(gridsterItem: GridsterItemComponent, gridster: GridsterComponent);
+    constructor(gridsterItem: GridsterItemCustomElement, gridster: GridsterCustomElement);
     dragStart(e: any): void;
     dragMove(e: any): void;
     calculateItemPositionFromMousePosition(e: any): void;

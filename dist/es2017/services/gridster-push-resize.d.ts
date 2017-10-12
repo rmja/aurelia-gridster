@@ -1,5 +1,5 @@
-import { GridsterComponent } from '../gridster';
-import { GridsterItemComponent } from '../gridster-item';
+import { GridsterCustomElement } from '../gridster';
+import { GridsterItemCustomElement } from '../gridster-item';
 export declare class GridsterPushResize {
     private pushedItems;
     private pushedItemsPath;
@@ -10,7 +10,7 @@ export declare class GridsterPushResize {
     fromNorth: string;
     fromEast: string;
     fromWest: string;
-    constructor(gridsterItem: GridsterItemComponent, gridster: GridsterComponent);
+    constructor(gridsterItem: GridsterItemCustomElement, gridster: GridsterCustomElement);
     pushItems(direction: any): void;
     restoreItems(): void;
     setPushedItems(): void;

@@ -7,13 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { autoinject, bindable, customElement } from 'aurelia-framework';
-import { GridsterComponent } from './gridster';
+import { GridsterCustomElement } from './gridster';
 import { GridsterDraggable } from './services/gridster-draggable';
 import { GridsterResizable } from './services/gridster-resizable';
 import { GridsterUtils } from './services/gridster-utils';
 import { Renderer } from './renderer';
-let GridsterItemComponent = class GridsterItemComponent {
+import { autoinject } from 'aurelia-dependency-injection';
+import { bindable } from 'aurelia-templating';
+let GridsterItemCustomElement = class GridsterItemCustomElement {
     constructor(gridster, renderer) {
         this.renderer = renderer;
         this.itemChange = (_) => { };
@@ -139,18 +140,17 @@ let GridsterItemComponent = class GridsterItemComponent {
 __decorate([
     bindable,
     __metadata("design:type", Object)
-], GridsterItemComponent.prototype, "item", void 0);
+], GridsterItemCustomElement.prototype, "item", void 0);
 __decorate([
     bindable,
     __metadata("design:type", Object)
-], GridsterItemComponent.prototype, "itemChange", void 0);
+], GridsterItemCustomElement.prototype, "itemChange", void 0);
 __decorate([
     bindable,
     __metadata("design:type", Object)
-], GridsterItemComponent.prototype, "itemResize", void 0);
-GridsterItemComponent = __decorate([
+], GridsterItemCustomElement.prototype, "itemResize", void 0);
+GridsterItemCustomElement = __decorate([
     autoinject,
-    customElement('gridster-item'),
-    __metadata("design:paramtypes", [GridsterComponent, Renderer])
-], GridsterItemComponent);
-export { GridsterItemComponent };
+    __metadata("design:paramtypes", [GridsterCustomElement, Renderer])
+], GridsterItemCustomElement);
+export { GridsterItemCustomElement };

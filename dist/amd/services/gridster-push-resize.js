@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "../gridster", "../gridster-item", "aurelia-framework"], function (require, exports, gridster_1, gridster_item_1, aurelia_framework_1) {
+define(["require", "exports", "../gridster", "../gridster-item", "aurelia-dependency-injection"], function (require, exports, gridster_1, gridster_item_1, aurelia_dependency_injection_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var GridsterPushResize = /** @class */ (function () {
@@ -76,7 +76,7 @@ define(["require", "exports", "../gridster", "../gridster-item", "aurelia-framew
             var backUpRows = gridsterItemCollide.$item.rows;
             gridsterItemCollide.$item.y = gridsterItem.$item.y + gridsterItem.$item.rows;
             gridsterItemCollide.$item.rows = backUpRows + backUpY - gridsterItemCollide.$item.y;
-            if (!gridster_1.GridsterComponent.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
+            if (!gridster_1.GridsterCustomElement.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
                 && !this.gridster.checkGridCollision(gridsterItemCollide.$item)) {
                 gridsterItemCollide.setSize(true);
                 this.addToPushed(gridsterItemCollide);
@@ -92,7 +92,7 @@ define(["require", "exports", "../gridster", "../gridster-item", "aurelia-framew
         GridsterPushResize.prototype.tryNorth = function (gridsterItemCollide, gridsterItem, direction) {
             var backUpRows = gridsterItemCollide.$item.rows;
             gridsterItemCollide.$item.rows = gridsterItem.$item.y - gridsterItemCollide.$item.y;
-            if (!gridster_1.GridsterComponent.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
+            if (!gridster_1.GridsterCustomElement.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
                 && !this.gridster.checkGridCollision(gridsterItemCollide.$item)) {
                 gridsterItemCollide.setSize(true);
                 this.addToPushed(gridsterItemCollide);
@@ -109,7 +109,7 @@ define(["require", "exports", "../gridster", "../gridster-item", "aurelia-framew
             var backUpCols = gridsterItemCollide.$item.cols;
             gridsterItemCollide.$item.x = gridsterItem.$item.x + gridsterItem.$item.cols;
             gridsterItemCollide.$item.cols = backUpCols + backUpX - gridsterItemCollide.$item.x;
-            if (!gridster_1.GridsterComponent.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
+            if (!gridster_1.GridsterCustomElement.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
                 && !this.gridster.checkGridCollision(gridsterItemCollide.$item)) {
                 gridsterItemCollide.setSize(true);
                 this.addToPushed(gridsterItemCollide);
@@ -125,7 +125,7 @@ define(["require", "exports", "../gridster", "../gridster-item", "aurelia-framew
         GridsterPushResize.prototype.tryWest = function (gridsterItemCollide, gridsterItem, direction) {
             var backUpCols = gridsterItemCollide.$item.cols;
             gridsterItemCollide.$item.cols = gridsterItem.$item.x - gridsterItemCollide.$item.x;
-            if (!gridster_1.GridsterComponent.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
+            if (!gridster_1.GridsterCustomElement.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
                 && !this.gridster.checkGridCollision(gridsterItemCollide.$item)) {
                 gridsterItemCollide.setSize(true);
                 this.addToPushed(gridsterItemCollide);
@@ -215,8 +215,8 @@ define(["require", "exports", "../gridster", "../gridster-item", "aurelia-framew
             return false;
         };
         GridsterPushResize = __decorate([
-            aurelia_framework_1.autoinject,
-            __metadata("design:paramtypes", [gridster_item_1.GridsterItemComponent, gridster_1.GridsterComponent])
+            aurelia_dependency_injection_1.autoinject,
+            __metadata("design:paramtypes", [gridster_item_1.GridsterItemCustomElement, gridster_1.GridsterCustomElement])
         ], GridsterPushResize);
         return GridsterPushResize;
     }());

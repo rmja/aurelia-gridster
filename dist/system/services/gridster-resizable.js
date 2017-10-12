@@ -1,4 +1,4 @@
-System.register(["aurelia-framework", "./gridster-scroll", "../gridster", "../gridster-item", "./gridster-push", "./gridster-push-resize", "./gridster-utils"], function (exports_1, context_1) {
+System.register(["./gridster-scroll", "../gridster", "../gridster-item", "./gridster-push", "./gridster-push-resize", "./gridster-utils", "aurelia-dependency-injection"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,12 +10,9 @@ System.register(["aurelia-framework", "./gridster-scroll", "../gridster", "../gr
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, gridster_scroll_1, gridster_1, gridster_item_1, gridster_push_1, gridster_push_resize_1, gridster_utils_1, GridsterResizable;
+    var gridster_scroll_1, gridster_1, gridster_item_1, gridster_push_1, gridster_push_resize_1, gridster_utils_1, aurelia_dependency_injection_1, GridsterResizable;
     return {
         setters: [
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
             function (gridster_scroll_1_1) {
                 gridster_scroll_1 = gridster_scroll_1_1;
             },
@@ -33,6 +30,9 @@ System.register(["aurelia-framework", "./gridster-scroll", "../gridster", "../gr
             },
             function (gridster_utils_1_1) {
                 gridster_utils_1 = gridster_utils_1_1;
+            },
+            function (aurelia_dependency_injection_1_1) {
+                aurelia_dependency_injection_1 = aurelia_dependency_injection_1_1;
             }
         ],
         execute: function () {
@@ -348,8 +348,8 @@ System.register(["aurelia-framework", "./gridster-scroll", "../gridster", "../gr
                     }
                 };
                 GridsterResizable = __decorate([
-                    aurelia_framework_1.autoinject,
-                    __metadata("design:paramtypes", [gridster_item_1.GridsterItemComponent, gridster_1.GridsterComponent])
+                    aurelia_dependency_injection_1.autoinject,
+                    __metadata("design:paramtypes", [gridster_item_1.GridsterItemCustomElement, gridster_1.GridsterCustomElement])
                 ], GridsterResizable);
                 return GridsterResizable;
             }());

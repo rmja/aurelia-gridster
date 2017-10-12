@@ -1,18 +1,18 @@
-import { Disposable, autoinject, bindable, customElement } from 'aurelia-framework';
-
+import { Disposable } from 'aurelia-binding';
 import { GridsterCompact } from './services/gridster-compact';
 import { GridsterConfig } from './interfaces/gridster-config';
 import { GridsterConfigService } from './services/gridster-config';
 import { GridsterEmptyCell } from './services/gridster-empty-cell';
-import { GridsterGridComponent } from './gridster-grid';
+import { GridsterGridCustomElement } from './gridster-grid';
 import { GridsterItem } from './interfaces/gridster-item';
-import { GridsterItemComponent } from './gridster-item';
+import { GridsterItemCustomElement } from './gridster-item';
 import { GridsterUtils } from './services/gridster-utils';
 import { Renderer } from './renderer';
+import { autoinject } from 'aurelia-dependency-injection';
+import { bindable } from 'aurelia-templating';
 
 @autoinject
-@customElement('gridster')
-export class GridsterComponent {
+export class GridsterCustomElement {
   @bindable options: GridsterConfig;
   calculateLayoutDebounce: Function;
   movingItem: GridsterItem;
@@ -22,13 +22,13 @@ export class GridsterComponent {
   mobile: boolean;
   curWidth: number;
   curHeight: number;
-  grid: Array<GridsterItemComponent>;
+  grid: Array<GridsterItemCustomElement>;
   columns: number;
   rows: number;
   curColWidth: number;
   curRowHeight: number;
   windowResize: Disposable | null;
-  gridLines: GridsterGridComponent;
+  gridLines: GridsterGridCustomElement;
   dragInProgress: boolean;
   emptyCell: GridsterEmptyCell;
   compact: GridsterCompact;
@@ -110,7 +110,7 @@ export class GridsterComponent {
 
   optionsChanged2(): void {
     this.setOptions();
-    let widgetsIndex: number = this.grid.length - 1, widget: GridsterItemComponent;
+    let widgetsIndex: number = this.grid.length - 1, widget: GridsterItemCustomElement;
     for (; widgetsIndex >= 0; widgetsIndex--) {
       widget = this.grid[widgetsIndex];
       widget.updateOptions();
@@ -241,7 +241,7 @@ export class GridsterComponent {
     }
     this.gridLines.updateGrid();
 
-    let widgetsIndex: number = this.grid.length - 1, widget: GridsterItemComponent;
+    let widgetsIndex: number = this.grid.length - 1, widget: GridsterItemCustomElement;
     for (; widgetsIndex >= 0; widgetsIndex--) {
       widget = this.grid[widgetsIndex];
       widget.setSize(false);
@@ -252,7 +252,7 @@ export class GridsterComponent {
     setTimeout(this.resize.bind(this), 100);
   }
 
-  addItem(itemComponent: GridsterItemComponent): void {
+  addItem(itemComponent: GridsterItemCustomElement): void {
     if (itemComponent.$item.cols === undefined) {
       itemComponent.$item.cols = this.$options.defaultItemCols;
       itemComponent.item.cols = itemComponent.$item.cols;
@@ -280,7 +280,7 @@ export class GridsterComponent {
     }
   }
 
-  removeItem(itemComponent: GridsterItemComponent): void {
+  removeItem(itemComponent: GridsterItemCustomElement): void {
     this.grid.splice(this.grid.indexOf(itemComponent), 1);
     this.calculateLayoutDebounce();
     if (this.$options.itemRemovedCallback) {
@@ -288,7 +288,7 @@ export class GridsterComponent {
     }
   }
 
-  checkCollision(item: GridsterItem): GridsterItemComponent | boolean {
+  checkCollision(item: GridsterItem): GridsterItemCustomElement | boolean {
     return this.checkGridCollision(item) || this.findItemWithItem(item);
   }
 
@@ -310,30 +310,30 @@ export class GridsterComponent {
     return !(noNegativePosition && maxGridCols && maxGridRows && inColsLimits && inRowsLimits && inMinArea && inMaxArea);
   }
 
-  findItemWithItem(item: GridsterItem): GridsterItemComponent | boolean {
-    let widgetsIndex: number = this.grid.length - 1, widget: GridsterItemComponent;
+  findItemWithItem(item: GridsterItem): GridsterItemCustomElement | boolean {
+    let widgetsIndex: number = this.grid.length - 1, widget: GridsterItemCustomElement;
     for (; widgetsIndex > -1; widgetsIndex--) {
       widget = this.grid[widgetsIndex];
-      if (widget.$item !== item && GridsterComponent.checkCollisionTwoItems(widget.$item, item)) {
+      if (widget.$item !== item && GridsterCustomElement.checkCollisionTwoItems(widget.$item, item)) {
         return widget;
       }
     }
     return false;
   }
 
-  findItemsWithItem(item: GridsterItem): Array<GridsterItemComponent> {
-    const a: Array<GridsterItemComponent> = [];
-    let widgetsIndex: number = this.grid.length - 1, widget: GridsterItemComponent;
+  findItemsWithItem(item: GridsterItem): Array<GridsterItemCustomElement> {
+    const a: Array<GridsterItemCustomElement> = [];
+    let widgetsIndex: number = this.grid.length - 1, widget: GridsterItemCustomElement;
     for (; widgetsIndex > -1; widgetsIndex--) {
       widget = this.grid[widgetsIndex];
-      if (widget.$item !== item && GridsterComponent.checkCollisionTwoItems(widget.$item, item)) {
+      if (widget.$item !== item && GridsterCustomElement.checkCollisionTwoItems(widget.$item, item)) {
         a.push(widget);
       }
     }
     return a;
   }
 
-  autoPositionItem(itemComponent: GridsterItemComponent): void {
+  autoPositionItem(itemComponent: GridsterItemCustomElement): void {
     if (this.getNextPossiblePosition(itemComponent.$item)) {
       itemComponent.item.x = itemComponent.$item.x;
       itemComponent.item.y = itemComponent.$item.y;

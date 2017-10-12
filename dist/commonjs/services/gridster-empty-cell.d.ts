@@ -1,5 +1,5 @@
-import { Disposable } from 'aurelia-framework';
-import { GridsterComponent } from '../gridster';
+import { Disposable } from 'aurelia-binding';
+import { GridsterCustomElement } from '../gridster';
 import { GridsterItem } from '../interfaces/gridster-item';
 export declare class GridsterEmptyCell {
     private gridster;
@@ -11,7 +11,7 @@ export declare class GridsterEmptyCell {
     emptyCellMMove: Disposable;
     emptyCellUp: Disposable;
     emptyCellMove: Disposable | null;
-    constructor(gridster: GridsterComponent);
+    constructor(gridster: GridsterCustomElement);
     updateOptions(): void;
     emptyCellClickCb(e: any): void;
     emptyCellContextMenuCb(e: any): void;

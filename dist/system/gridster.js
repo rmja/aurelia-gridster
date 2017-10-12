@@ -1,4 +1,4 @@
-System.register(["aurelia-framework", "./services/gridster-compact", "./services/gridster-config", "./services/gridster-empty-cell", "./services/gridster-utils", "./renderer"], function (exports_1, context_1) {
+System.register(["./services/gridster-compact", "./services/gridster-config", "./services/gridster-empty-cell", "./services/gridster-utils", "./renderer", "aurelia-dependency-injection", "aurelia-templating"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,12 +10,9 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, gridster_compact_1, gridster_config_1, gridster_empty_cell_1, gridster_utils_1, renderer_1, GridsterComponent;
+    var gridster_compact_1, gridster_config_1, gridster_empty_cell_1, gridster_utils_1, renderer_1, aurelia_dependency_injection_1, aurelia_templating_1, GridsterCustomElement;
     return {
         setters: [
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
             function (gridster_compact_1_1) {
                 gridster_compact_1 = gridster_compact_1_1;
             },
@@ -30,11 +27,17 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
             },
             function (renderer_1_1) {
                 renderer_1 = renderer_1_1;
+            },
+            function (aurelia_dependency_injection_1_1) {
+                aurelia_dependency_injection_1 = aurelia_dependency_injection_1_1;
+            },
+            function (aurelia_templating_1_1) {
+                aurelia_templating_1 = aurelia_templating_1_1;
             }
         ],
         execute: function () {
-            GridsterComponent = /** @class */ (function () {
-                function GridsterComponent(renderer) {
+            GridsterCustomElement = /** @class */ (function () {
+                function GridsterCustomElement(renderer) {
                     this.renderer = renderer;
                     this.$options = JSON.parse(JSON.stringify(gridster_config_1.GridsterConfigService));
                     this.mobile = false;
@@ -59,14 +62,14 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                     this.emptyCell = new gridster_empty_cell_1.GridsterEmptyCell(this);
                     this.compact = new gridster_compact_1.GridsterCompact(this);
                 }
-                GridsterComponent_1 = GridsterComponent;
-                GridsterComponent.checkCollisionTwoItems = function (item, item2) {
+                GridsterCustomElement_1 = GridsterCustomElement;
+                GridsterCustomElement.checkCollisionTwoItems = function (item, item2) {
                     return item.x < item2.x + item2.cols
                         && item.x + item.cols > item2.x
                         && item.y < item2.y + item2.rows
                         && item.y + item.rows > item2.y;
                 };
-                GridsterComponent.prototype.attached = function () {
+                GridsterCustomElement.prototype.attached = function () {
                     this.setOptions();
                     this.options.api = {
                         optionsChanged: this.optionsChanged2.bind(this),
@@ -82,7 +85,7 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                         this.options.initCallback(this);
                     }
                 };
-                GridsterComponent.prototype.resize = function () {
+                GridsterCustomElement.prototype.resize = function () {
                     var height;
                     var width;
                     if (this.$options.gridType === 'fit' && !this.mobile) {
@@ -97,7 +100,7 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                         this.onResize();
                     }
                 };
-                GridsterComponent.prototype.setOptions = function () {
+                GridsterCustomElement.prototype.setOptions = function () {
                     this.$options = gridster_utils_1.GridsterUtils.merge(this.$options, this.options, this.$options);
                     if (!this.$options.disableWindowResize && !this.windowResize) {
                         this.windowResize = this.renderer.listen(window, 'resize', this.onResize.bind(this));
@@ -108,7 +111,7 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                     }
                     this.emptyCell.updateOptions();
                 };
-                GridsterComponent.prototype.optionsChanged2 = function () {
+                GridsterCustomElement.prototype.optionsChanged2 = function () {
                     this.setOptions();
                     var widgetsIndex = this.grid.length - 1, widget;
                     for (; widgetsIndex >= 0; widgetsIndex--) {
@@ -117,16 +120,16 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                     }
                     this.calculateLayout();
                 };
-                GridsterComponent.prototype.detached = function () {
+                GridsterCustomElement.prototype.detached = function () {
                     if (this.windowResize) {
                         this.windowResize.dispose();
                     }
                 };
-                GridsterComponent.prototype.onResize = function () {
+                GridsterCustomElement.prototype.onResize = function () {
                     this.setGridSize();
                     this.calculateLayoutDebounce();
                 };
-                GridsterComponent.prototype.checkIfToResize = function () {
+                GridsterCustomElement.prototype.checkIfToResize = function () {
                     var clientWidth = this.el.clientWidth;
                     var offsetWidth = this.el.offsetWidth;
                     var scrollWidth = this.el.scrollWidth;
@@ -142,7 +145,7 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                     }
                     return !horizontalScrollPresent;
                 };
-                GridsterComponent.prototype.setGridSize = function () {
+                GridsterCustomElement.prototype.setGridSize = function () {
                     var width = this.el.clientWidth;
                     var height = this.el.clientHeight;
                     if (this.$options.gridType === 'fit' && !this.mobile) {
@@ -156,7 +159,7 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                     this.curWidth = width;
                     this.curHeight = height;
                 };
-                GridsterComponent.prototype.setGridDimensions = function () {
+                GridsterCustomElement.prototype.setGridDimensions = function () {
                     var rows = this.$options.minRows, columns = this.$options.minCols;
                     var widgetsIndex = this.grid.length - 1;
                     for (; widgetsIndex >= 0; widgetsIndex--) {
@@ -166,7 +169,7 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                     this.columns = columns;
                     this.rows = rows;
                 };
-                GridsterComponent.prototype.calculateLayout = function () {
+                GridsterCustomElement.prototype.calculateLayout = function () {
                     // check to compact
                     this.compact.checkCompact();
                     this.setGridDimensions();
@@ -246,7 +249,7 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                     }
                     setTimeout(this.resize.bind(this), 100);
                 };
-                GridsterComponent.prototype.addItem = function (itemComponent) {
+                GridsterCustomElement.prototype.addItem = function (itemComponent) {
                     if (itemComponent.$item.cols === undefined) {
                         itemComponent.$item.cols = this.$options.defaultItemCols;
                         itemComponent.item.cols = itemComponent.$item.cols;
@@ -274,17 +277,17 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                         this.$options.itemInitCallback(itemComponent.item, itemComponent);
                     }
                 };
-                GridsterComponent.prototype.removeItem = function (itemComponent) {
+                GridsterCustomElement.prototype.removeItem = function (itemComponent) {
                     this.grid.splice(this.grid.indexOf(itemComponent), 1);
                     this.calculateLayoutDebounce();
                     if (this.$options.itemRemovedCallback) {
                         this.$options.itemRemovedCallback(itemComponent.item, itemComponent);
                     }
                 };
-                GridsterComponent.prototype.checkCollision = function (item) {
+                GridsterCustomElement.prototype.checkCollision = function (item) {
                     return this.checkGridCollision(item) || this.findItemWithItem(item);
                 };
-                GridsterComponent.prototype.checkGridCollision = function (item) {
+                GridsterCustomElement.prototype.checkGridCollision = function (item) {
                     var noNegativePosition = item.y > -1 && item.x > -1;
                     var maxGridCols = item.cols + item.x <= this.$options.maxCols;
                     var maxGridRows = item.rows + item.y <= this.$options.maxRows;
@@ -301,28 +304,28 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                     var inMaxArea = maxAreaLimit >= area;
                     return !(noNegativePosition && maxGridCols && maxGridRows && inColsLimits && inRowsLimits && inMinArea && inMaxArea);
                 };
-                GridsterComponent.prototype.findItemWithItem = function (item) {
+                GridsterCustomElement.prototype.findItemWithItem = function (item) {
                     var widgetsIndex = this.grid.length - 1, widget;
                     for (; widgetsIndex > -1; widgetsIndex--) {
                         widget = this.grid[widgetsIndex];
-                        if (widget.$item !== item && GridsterComponent_1.checkCollisionTwoItems(widget.$item, item)) {
+                        if (widget.$item !== item && GridsterCustomElement_1.checkCollisionTwoItems(widget.$item, item)) {
                             return widget;
                         }
                     }
                     return false;
                 };
-                GridsterComponent.prototype.findItemsWithItem = function (item) {
+                GridsterCustomElement.prototype.findItemsWithItem = function (item) {
                     var a = [];
                     var widgetsIndex = this.grid.length - 1, widget;
                     for (; widgetsIndex > -1; widgetsIndex--) {
                         widget = this.grid[widgetsIndex];
-                        if (widget.$item !== item && GridsterComponent_1.checkCollisionTwoItems(widget.$item, item)) {
+                        if (widget.$item !== item && GridsterCustomElement_1.checkCollisionTwoItems(widget.$item, item)) {
                             a.push(widget);
                         }
                     }
                     return a;
                 };
-                GridsterComponent.prototype.autoPositionItem = function (itemComponent) {
+                GridsterCustomElement.prototype.autoPositionItem = function (itemComponent) {
                     if (this.getNextPossiblePosition(itemComponent.$item)) {
                         itemComponent.item.x = itemComponent.$item.x;
                         itemComponent.item.y = itemComponent.$item.y;
@@ -334,7 +337,7 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                             JSON.stringify(itemComponent.item, ['cols', 'rows', 'x', 'y']));
                     }
                 };
-                GridsterComponent.prototype.getNextPossiblePosition = function (newItem) {
+                GridsterCustomElement.prototype.getNextPossiblePosition = function (newItem) {
                     if (newItem.cols === -1) {
                         newItem.cols = this.$options.defaultItemCols;
                     }
@@ -368,34 +371,33 @@ System.register(["aurelia-framework", "./services/gridster-compact", "./services
                     }
                     return false;
                 };
-                GridsterComponent.prototype.pixelsToPosition = function (x, y, roundingMethod) {
+                GridsterCustomElement.prototype.pixelsToPosition = function (x, y, roundingMethod) {
                     return [this.pixelsToPositionX(x, roundingMethod), this.pixelsToPositionY(y, roundingMethod)];
                 };
-                GridsterComponent.prototype.pixelsToPositionX = function (x, roundingMethod) {
+                GridsterCustomElement.prototype.pixelsToPositionX = function (x, roundingMethod) {
                     return Math.max(roundingMethod(x / this.curColWidth), 0);
                 };
-                GridsterComponent.prototype.pixelsToPositionY = function (y, roundingMethod) {
+                GridsterCustomElement.prototype.pixelsToPositionY = function (y, roundingMethod) {
                     return Math.max(roundingMethod(y / this.curRowHeight), 0);
                 };
-                GridsterComponent.prototype.positionXToPixels = function (x) {
+                GridsterCustomElement.prototype.positionXToPixels = function (x) {
                     return x * this.curColWidth;
                 };
-                GridsterComponent.prototype.positionYToPixels = function (y) {
+                GridsterCustomElement.prototype.positionYToPixels = function (y) {
                     return y * this.curRowHeight;
                 };
                 __decorate([
-                    aurelia_framework_1.bindable,
+                    aurelia_templating_1.bindable,
                     __metadata("design:type", Object)
-                ], GridsterComponent.prototype, "options", void 0);
-                GridsterComponent = GridsterComponent_1 = __decorate([
-                    aurelia_framework_1.autoinject,
-                    aurelia_framework_1.customElement('gridster'),
+                ], GridsterCustomElement.prototype, "options", void 0);
+                GridsterCustomElement = GridsterCustomElement_1 = __decorate([
+                    aurelia_dependency_injection_1.autoinject,
                     __metadata("design:paramtypes", [renderer_1.Renderer])
-                ], GridsterComponent);
-                return GridsterComponent;
-                var GridsterComponent_1;
+                ], GridsterCustomElement);
+                return GridsterCustomElement;
+                var GridsterCustomElement_1;
             }());
-            exports_1("GridsterComponent", GridsterComponent);
+            exports_1("GridsterCustomElement", GridsterCustomElement);
         }
     };
 });

@@ -7,11 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { autoinject, customElement } from 'aurelia-framework';
-import { GridsterComponent } from './gridster';
+import { GridsterCustomElement } from './gridster';
 import { Renderer } from './renderer';
-var GridsterGridComponent = /** @class */ (function () {
-    function GridsterGridComponent(gridster, renderer) {
+import { autoinject } from 'aurelia-dependency-injection';
+var GridsterGridCustomElement = /** @class */ (function () {
+    function GridsterGridCustomElement(gridster, renderer) {
         this.gridster = gridster;
         this.renderer = renderer;
         this.gridster.gridLines = this;
@@ -22,7 +22,7 @@ var GridsterGridComponent = /** @class */ (function () {
         this.columnsHeight = 0;
         this.rowsWidth = 0;
     }
-    GridsterGridComponent.prototype.updateGrid = function () {
+    GridsterGridCustomElement.prototype.updateGrid = function () {
         if (this.gridster.$options.displayGrid === 'always' && !this.gridster.mobile) {
             this.renderer.setStyle(this.el, 'display', 'block');
         }
@@ -41,11 +41,10 @@ var GridsterGridComponent = /** @class */ (function () {
         this.columnsHeight = this.gridster.curRowHeight * this.rows;
         this.rowsWidth = this.gridster.curColWidth * this.columns;
     };
-    GridsterGridComponent = __decorate([
+    GridsterGridCustomElement = __decorate([
         autoinject,
-        customElement('gridster-grid'),
-        __metadata("design:paramtypes", [GridsterComponent, Renderer])
-    ], GridsterGridComponent);
-    return GridsterGridComponent;
+        __metadata("design:paramtypes", [GridsterCustomElement, Renderer])
+    ], GridsterGridCustomElement);
+    return GridsterGridCustomElement;
 }());
-export { GridsterGridComponent };
+export { GridsterGridCustomElement };

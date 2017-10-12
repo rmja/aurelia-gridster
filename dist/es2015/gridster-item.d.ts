@@ -1,16 +1,16 @@
-import { GridsterComponent } from './gridster';
+import { GridsterCustomElement } from './gridster';
 import { GridsterDraggable } from './services/gridster-draggable';
 import { GridsterItem } from './interfaces/gridster-item';
 import { GridsterResizable } from './services/gridster-resizable';
 import { Renderer } from './renderer';
-export declare class GridsterItemComponent {
+export declare class GridsterItemCustomElement {
     renderer: Renderer;
     item: GridsterItem;
     itemChange: (_: GridsterItem) => void;
     itemResize: (_: GridsterItem) => void;
     $item: GridsterItem;
     el: HTMLElement;
-    gridster: GridsterComponent;
+    gridster: GridsterCustomElement;
     itemTop: number;
     itemLeft: number;
     itemWidth: number;
@@ -23,7 +23,7 @@ export declare class GridsterItemComponent {
     drag: GridsterDraggable;
     resize: GridsterResizable;
     notPlaced: boolean;
-    constructor(gridster: GridsterComponent, renderer: Renderer);
+    constructor(gridster: GridsterCustomElement, renderer: Renderer);
     attached(): void;
     updateOptions(): void;
     detached(): void;

@@ -1,16 +1,17 @@
-import { Disposable, autoinject } from 'aurelia-framework';
 import { cancelScroll, scroll } from './gridster-scroll';
 
-import { GridsterComponent } from '../gridster';
-import { GridsterItemComponent } from '../gridster-item';
+import { Disposable } from 'aurelia-binding';
+import { GridsterCustomElement } from '../gridster';
+import { GridsterItemCustomElement } from '../gridster-item';
 import { GridsterPush } from './gridster-push';
 import { GridsterSwap } from './gridster-swap';
 import { GridsterUtils } from './gridster-utils';
+import { autoinject } from 'aurelia-dependency-injection';
 
 @autoinject
 export class GridsterDraggable {
-  gridsterItem: GridsterItemComponent;
-  gridster: GridsterComponent;
+  gridsterItem: GridsterItemCustomElement;
+  gridster: GridsterCustomElement;
   lastMouse: {
     clientX: number,
     clientY: number
@@ -43,7 +44,7 @@ export class GridsterDraggable {
   swap: GridsterSwap;
   path: Array<{ x: number, y: number }>;
 
-  constructor(gridsterItem: GridsterItemComponent, gridster: GridsterComponent) {
+  constructor(gridsterItem: GridsterItemCustomElement, gridster: GridsterCustomElement) {
     this.gridsterItem = gridsterItem;
     this.gridster = gridster;
     this.lastMouse = {

@@ -7,13 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { autoinject, bindable, customElement } from 'aurelia-framework';
 import { GridsterCompact } from './services/gridster-compact';
 import { GridsterConfigService } from './services/gridster-config';
 import { GridsterEmptyCell } from './services/gridster-empty-cell';
 import { GridsterUtils } from './services/gridster-utils';
 import { Renderer } from './renderer';
-let GridsterComponent = GridsterComponent_1 = class GridsterComponent {
+import { autoinject } from 'aurelia-dependency-injection';
+import { bindable } from 'aurelia-templating';
+let GridsterCustomElement = GridsterCustomElement_1 = class GridsterCustomElement {
     constructor(renderer) {
         this.renderer = renderer;
         this.$options = JSON.parse(JSON.stringify(GridsterConfigService));
@@ -284,7 +285,7 @@ let GridsterComponent = GridsterComponent_1 = class GridsterComponent {
         let widgetsIndex = this.grid.length - 1, widget;
         for (; widgetsIndex > -1; widgetsIndex--) {
             widget = this.grid[widgetsIndex];
-            if (widget.$item !== item && GridsterComponent_1.checkCollisionTwoItems(widget.$item, item)) {
+            if (widget.$item !== item && GridsterCustomElement_1.checkCollisionTwoItems(widget.$item, item)) {
                 return widget;
             }
         }
@@ -295,7 +296,7 @@ let GridsterComponent = GridsterComponent_1 = class GridsterComponent {
         let widgetsIndex = this.grid.length - 1, widget;
         for (; widgetsIndex > -1; widgetsIndex--) {
             widget = this.grid[widgetsIndex];
-            if (widget.$item !== item && GridsterComponent_1.checkCollisionTwoItems(widget.$item, item)) {
+            if (widget.$item !== item && GridsterCustomElement_1.checkCollisionTwoItems(widget.$item, item)) {
                 a.push(widget);
             }
         }
@@ -366,11 +367,10 @@ let GridsterComponent = GridsterComponent_1 = class GridsterComponent {
 __decorate([
     bindable,
     __metadata("design:type", Object)
-], GridsterComponent.prototype, "options", void 0);
-GridsterComponent = GridsterComponent_1 = __decorate([
+], GridsterCustomElement.prototype, "options", void 0);
+GridsterCustomElement = GridsterCustomElement_1 = __decorate([
     autoinject,
-    customElement('gridster'),
     __metadata("design:paramtypes", [Renderer])
-], GridsterComponent);
-export { GridsterComponent };
-var GridsterComponent_1;
+], GridsterCustomElement);
+export { GridsterCustomElement };
+var GridsterCustomElement_1;

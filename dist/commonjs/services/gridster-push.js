@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var gridster_1 = require("../gridster");
 var gridster_item_1 = require("../gridster-item");
-var aurelia_framework_1 = require("aurelia-framework");
+var aurelia_dependency_injection_1 = require("aurelia-dependency-injection");
 var GridsterPush = /** @class */ (function () {
     function GridsterPush(gridsterItem, gridster) {
         this.pushedItems = [];
@@ -248,8 +248,8 @@ var GridsterPush = /** @class */ (function () {
         return change;
     };
     GridsterPush = __decorate([
-        aurelia_framework_1.autoinject,
-        __metadata("design:paramtypes", [gridster_item_1.GridsterItemComponent, gridster_1.GridsterComponent])
+        aurelia_dependency_injection_1.autoinject,
+        __metadata("design:paramtypes", [gridster_item_1.GridsterItemCustomElement, gridster_1.GridsterCustomElement])
     ], GridsterPush);
     return GridsterPush;
 }());

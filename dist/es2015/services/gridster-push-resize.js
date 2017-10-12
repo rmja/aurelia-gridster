@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { GridsterComponent } from '../gridster';
-import { GridsterItemComponent } from '../gridster-item';
-import { autoinject } from 'aurelia-framework';
+import { GridsterCustomElement } from '../gridster';
+import { GridsterItemCustomElement } from '../gridster-item';
+import { autoinject } from 'aurelia-dependency-injection';
 let GridsterPushResize = class GridsterPushResize {
     constructor(gridsterItem, gridster) {
         this.pushedItems = [];
@@ -76,7 +76,7 @@ let GridsterPushResize = class GridsterPushResize {
         const backUpRows = gridsterItemCollide.$item.rows;
         gridsterItemCollide.$item.y = gridsterItem.$item.y + gridsterItem.$item.rows;
         gridsterItemCollide.$item.rows = backUpRows + backUpY - gridsterItemCollide.$item.y;
-        if (!GridsterComponent.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
+        if (!GridsterCustomElement.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
             && !this.gridster.checkGridCollision(gridsterItemCollide.$item)) {
             gridsterItemCollide.setSize(true);
             this.addToPushed(gridsterItemCollide);
@@ -92,7 +92,7 @@ let GridsterPushResize = class GridsterPushResize {
     tryNorth(gridsterItemCollide, gridsterItem, direction) {
         const backUpRows = gridsterItemCollide.$item.rows;
         gridsterItemCollide.$item.rows = gridsterItem.$item.y - gridsterItemCollide.$item.y;
-        if (!GridsterComponent.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
+        if (!GridsterCustomElement.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
             && !this.gridster.checkGridCollision(gridsterItemCollide.$item)) {
             gridsterItemCollide.setSize(true);
             this.addToPushed(gridsterItemCollide);
@@ -109,7 +109,7 @@ let GridsterPushResize = class GridsterPushResize {
         const backUpCols = gridsterItemCollide.$item.cols;
         gridsterItemCollide.$item.x = gridsterItem.$item.x + gridsterItem.$item.cols;
         gridsterItemCollide.$item.cols = backUpCols + backUpX - gridsterItemCollide.$item.x;
-        if (!GridsterComponent.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
+        if (!GridsterCustomElement.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
             && !this.gridster.checkGridCollision(gridsterItemCollide.$item)) {
             gridsterItemCollide.setSize(true);
             this.addToPushed(gridsterItemCollide);
@@ -125,7 +125,7 @@ let GridsterPushResize = class GridsterPushResize {
     tryWest(gridsterItemCollide, gridsterItem, direction) {
         const backUpCols = gridsterItemCollide.$item.cols;
         gridsterItemCollide.$item.cols = gridsterItem.$item.x - gridsterItemCollide.$item.x;
-        if (!GridsterComponent.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
+        if (!GridsterCustomElement.checkCollisionTwoItems(gridsterItemCollide.$item, gridsterItem.$item)
             && !this.gridster.checkGridCollision(gridsterItemCollide.$item)) {
             gridsterItemCollide.setSize(true);
             this.addToPushed(gridsterItemCollide);
@@ -217,6 +217,6 @@ let GridsterPushResize = class GridsterPushResize {
 };
 GridsterPushResize = __decorate([
     autoinject,
-    __metadata("design:paramtypes", [GridsterItemComponent, GridsterComponent])
+    __metadata("design:paramtypes", [GridsterItemCustomElement, GridsterCustomElement])
 ], GridsterPushResize);
 export { GridsterPushResize };

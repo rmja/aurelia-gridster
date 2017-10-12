@@ -7,10 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { autoinject, customElement } from 'aurelia-framework';
-import { GridsterComponent } from './gridster';
+import { GridsterCustomElement } from './gridster';
 import { Renderer } from './renderer';
-let GridsterGridComponent = class GridsterGridComponent {
+import { autoinject } from 'aurelia-dependency-injection';
+let GridsterGridCustomElement = class GridsterGridCustomElement {
     constructor(gridster, renderer) {
         this.gridster = gridster;
         this.renderer = renderer;
@@ -42,9 +42,8 @@ let GridsterGridComponent = class GridsterGridComponent {
         this.rowsWidth = this.gridster.curColWidth * this.columns;
     }
 };
-GridsterGridComponent = __decorate([
+GridsterGridCustomElement = __decorate([
     autoinject,
-    customElement('gridster-grid'),
-    __metadata("design:paramtypes", [GridsterComponent, Renderer])
-], GridsterGridComponent);
-export { GridsterGridComponent };
+    __metadata("design:paramtypes", [GridsterCustomElement, Renderer])
+], GridsterGridCustomElement);
+export { GridsterGridCustomElement };

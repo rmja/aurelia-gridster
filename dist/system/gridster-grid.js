@@ -1,4 +1,4 @@
-System.register(["aurelia-framework", "./gridster", "./renderer"], function (exports_1, context_1) {
+System.register(["./gridster", "./renderer", "aurelia-dependency-injection"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,22 +10,22 @@ System.register(["aurelia-framework", "./gridster", "./renderer"], function (exp
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, gridster_1, renderer_1, GridsterGridComponent;
+    var gridster_1, renderer_1, aurelia_dependency_injection_1, GridsterGridCustomElement;
     return {
         setters: [
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
             function (gridster_1_1) {
                 gridster_1 = gridster_1_1;
             },
             function (renderer_1_1) {
                 renderer_1 = renderer_1_1;
+            },
+            function (aurelia_dependency_injection_1_1) {
+                aurelia_dependency_injection_1 = aurelia_dependency_injection_1_1;
             }
         ],
         execute: function () {
-            GridsterGridComponent = /** @class */ (function () {
-                function GridsterGridComponent(gridster, renderer) {
+            GridsterGridCustomElement = /** @class */ (function () {
+                function GridsterGridCustomElement(gridster, renderer) {
                     this.gridster = gridster;
                     this.renderer = renderer;
                     this.gridster.gridLines = this;
@@ -36,7 +36,7 @@ System.register(["aurelia-framework", "./gridster", "./renderer"], function (exp
                     this.columnsHeight = 0;
                     this.rowsWidth = 0;
                 }
-                GridsterGridComponent.prototype.updateGrid = function () {
+                GridsterGridCustomElement.prototype.updateGrid = function () {
                     if (this.gridster.$options.displayGrid === 'always' && !this.gridster.mobile) {
                         this.renderer.setStyle(this.el, 'display', 'block');
                     }
@@ -55,14 +55,13 @@ System.register(["aurelia-framework", "./gridster", "./renderer"], function (exp
                     this.columnsHeight = this.gridster.curRowHeight * this.rows;
                     this.rowsWidth = this.gridster.curColWidth * this.columns;
                 };
-                GridsterGridComponent = __decorate([
-                    aurelia_framework_1.autoinject,
-                    aurelia_framework_1.customElement('gridster-grid'),
-                    __metadata("design:paramtypes", [gridster_1.GridsterComponent, renderer_1.Renderer])
-                ], GridsterGridComponent);
-                return GridsterGridComponent;
+                GridsterGridCustomElement = __decorate([
+                    aurelia_dependency_injection_1.autoinject,
+                    __metadata("design:paramtypes", [gridster_1.GridsterCustomElement, renderer_1.Renderer])
+                ], GridsterGridCustomElement);
+                return GridsterGridCustomElement;
             }());
-            exports_1("GridsterGridComponent", GridsterGridComponent);
+            exports_1("GridsterGridCustomElement", GridsterGridCustomElement);
         }
     };
 });

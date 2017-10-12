@@ -7,13 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { autoinject } from 'aurelia-framework';
 import { cancelScroll, scroll } from './gridster-scroll';
-import { GridsterComponent } from '../gridster';
-import { GridsterItemComponent } from '../gridster-item';
+import { GridsterCustomElement } from '../gridster';
+import { GridsterItemCustomElement } from '../gridster-item';
 import { GridsterPush } from './gridster-push';
 import { GridsterSwap } from './gridster-swap';
 import { GridsterUtils } from './gridster-utils';
+import { autoinject } from 'aurelia-dependency-injection';
 var GridsterDraggable = /** @class */ (function () {
     function GridsterDraggable(gridsterItem, gridster) {
         this.gridsterItem = gridsterItem;
@@ -217,7 +217,7 @@ var GridsterDraggable = /** @class */ (function () {
     };
     GridsterDraggable = __decorate([
         autoinject,
-        __metadata("design:paramtypes", [GridsterItemComponent, GridsterComponent])
+        __metadata("design:paramtypes", [GridsterItemCustomElement, GridsterCustomElement])
     ], GridsterDraggable);
     return GridsterDraggable;
 }());

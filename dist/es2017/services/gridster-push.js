@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { GridsterComponent } from '../gridster';
-import { GridsterItemComponent } from '../gridster-item';
-import { autoinject } from 'aurelia-framework';
+import { GridsterCustomElement } from '../gridster';
+import { GridsterItemCustomElement } from '../gridster-item';
+import { autoinject } from 'aurelia-dependency-injection';
 let GridsterPush = class GridsterPush {
     constructor(gridsterItem, gridster) {
         this.pushedItems = [];
@@ -248,6 +248,6 @@ let GridsterPush = class GridsterPush {
 };
 GridsterPush = __decorate([
     autoinject,
-    __metadata("design:paramtypes", [GridsterItemComponent, GridsterComponent])
+    __metadata("design:paramtypes", [GridsterItemCustomElement, GridsterCustomElement])
 ], GridsterPush);
 export { GridsterPush };

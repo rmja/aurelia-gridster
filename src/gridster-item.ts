@@ -1,21 +1,20 @@
-import { autoinject, bindable, customElement } from 'aurelia-framework';
-
-import { GridsterComponent } from './gridster';
+import { GridsterCustomElement } from './gridster';
 import { GridsterDraggable } from './services/gridster-draggable';
 import { GridsterItem } from './interfaces/gridster-item';
 import { GridsterResizable } from './services/gridster-resizable';
 import { GridsterUtils } from './services/gridster-utils';
 import { Renderer } from './renderer';
+import { autoinject } from 'aurelia-dependency-injection';
+import { bindable } from 'aurelia-templating';
 
 @autoinject
-@customElement('gridster-item')
-export class GridsterItemComponent {
+export class GridsterItemCustomElement {
   @bindable item: GridsterItem;
   @bindable itemChange = (_: GridsterItem) => { };
   @bindable itemResize = (_: GridsterItem) => { };
   $item: GridsterItem;
   el: HTMLElement;
-  gridster: GridsterComponent;
+  gridster: GridsterCustomElement;
   itemTop: number;
   itemLeft: number;
   itemWidth: number;
@@ -29,7 +28,7 @@ export class GridsterItemComponent {
   resize: GridsterResizable;
   notPlaced: boolean;
 
-  constructor(gridster: GridsterComponent, public renderer: Renderer) {
+  constructor(gridster: GridsterCustomElement, public renderer: Renderer) {
     this.$item = {
       cols: -1,
       rows: -1,

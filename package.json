@@ -43,7 +43,9 @@
     "prepare-release": "cross-env npm run changelog && npm run build && npm run doc"
   },
   "dependencies": {
-    "aurelia-framework": "^1.1.2"
+    "aurelia-dependency-injection": "^1.3.0",
+    "aurelia-pal": "^1.3.0",
+    "aurelia-templating": "^1.5.0"
   },
   "peerDependencies": {},
   "devDependencies": {
@@ -69,5 +71,15 @@
     "tslint": "^5.4.3",
     "typedoc": "^0.9.0",
     "typescript": "^2.4.1"
+  },
+  "aurelia": {
+    "build": {
+      "resources": [
+        "aurelia-gridster/gridster",
+        "aurelia-gridster/gridster-grid",
+        "aurelia-gridster/gridster-item",
+        "aurelia-gridster/gridster-preview"
+      ]
+    }
   }
 }

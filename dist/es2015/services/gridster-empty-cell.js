@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { autoinject } from 'aurelia-framework';
-import { GridsterComponent } from '../gridster';
+import { GridsterCustomElement } from '../gridster';
 import { GridsterUtils } from './gridster-utils';
+import { autoinject } from 'aurelia-dependency-injection';
 let GridsterEmptyCell = class GridsterEmptyCell {
     constructor(gridster) {
         this.gridster = gridster;
@@ -163,6 +163,6 @@ let GridsterEmptyCell = class GridsterEmptyCell {
 };
 GridsterEmptyCell = __decorate([
     autoinject,
-    __metadata("design:paramtypes", [GridsterComponent])
+    __metadata("design:paramtypes", [GridsterCustomElement])
 ], GridsterEmptyCell);
 export { GridsterEmptyCell };

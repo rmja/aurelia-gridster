@@ -7,11 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "./gridster", "./renderer"], function (require, exports, aurelia_framework_1, gridster_1, renderer_1) {
+define(["require", "exports", "./gridster", "./renderer", "aurelia-dependency-injection"], function (require, exports, gridster_1, renderer_1, aurelia_dependency_injection_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var GridsterGridComponent = /** @class */ (function () {
-        function GridsterGridComponent(gridster, renderer) {
+    var GridsterGridCustomElement = /** @class */ (function () {
+        function GridsterGridCustomElement(gridster, renderer) {
             this.gridster = gridster;
             this.renderer = renderer;
             this.gridster.gridLines = this;
@@ -22,7 +22,7 @@ define(["require", "exports", "aurelia-framework", "./gridster", "./renderer"], 
             this.columnsHeight = 0;
             this.rowsWidth = 0;
         }
-        GridsterGridComponent.prototype.updateGrid = function () {
+        GridsterGridCustomElement.prototype.updateGrid = function () {
             if (this.gridster.$options.displayGrid === 'always' && !this.gridster.mobile) {
                 this.renderer.setStyle(this.el, 'display', 'block');
             }
@@ -41,12 +41,11 @@ define(["require", "exports", "aurelia-framework", "./gridster", "./renderer"], 
             this.columnsHeight = this.gridster.curRowHeight * this.rows;
             this.rowsWidth = this.gridster.curColWidth * this.columns;
         };
-        GridsterGridComponent = __decorate([
-            aurelia_framework_1.autoinject,
-            aurelia_framework_1.customElement('gridster-grid'),
-            __metadata("design:paramtypes", [gridster_1.GridsterComponent, renderer_1.Renderer])
-        ], GridsterGridComponent);
-        return GridsterGridComponent;
+        GridsterGridCustomElement = __decorate([
+            aurelia_dependency_injection_1.autoinject,
+            __metadata("design:paramtypes", [gridster_1.GridsterCustomElement, renderer_1.Renderer])
+        ], GridsterGridCustomElement);
+        return GridsterGridCustomElement;
     }());
-    exports.GridsterGridComponent = GridsterGridComponent;
+    exports.GridsterGridCustomElement = GridsterGridCustomElement;
 });

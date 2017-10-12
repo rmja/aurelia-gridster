@@ -1,11 +1,11 @@
-import { GridsterComponent } from '../gridster';
-import { GridsterItemComponent } from '../gridster-item';
+import { GridsterCustomElement } from '../gridster';
+import { GridsterItemCustomElement } from '../gridster-item';
 export declare class GridsterCompact {
     private gridster;
-    constructor(gridster: GridsterComponent);
+    constructor(gridster: GridsterCustomElement);
     checkCompact(): void;
     checkCompactUp(): boolean;
-    moveUpTillCollision(itemComponent: GridsterItemComponent): boolean;
+    moveUpTillCollision(itemComponent: GridsterItemCustomElement): boolean;
     checkCompactLeft(): boolean;
-    moveLeftTillCollision(itemComponent: GridsterItemComponent): boolean;
+    moveLeftTillCollision(itemComponent: GridsterItemCustomElement): boolean;
 }

@@ -7,14 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { autoinject, bindable, customElement } from 'aurelia-framework';
-import { GridsterComponent } from './gridster';
+import { GridsterCustomElement } from './gridster';
 import { GridsterDraggable } from './services/gridster-draggable';
 import { GridsterResizable } from './services/gridster-resizable';
 import { GridsterUtils } from './services/gridster-utils';
 import { Renderer } from './renderer';
-var GridsterItemComponent = /** @class */ (function () {
-    function GridsterItemComponent(gridster, renderer) {
+import { autoinject } from 'aurelia-dependency-injection';
+import { bindable } from 'aurelia-templating';
+var GridsterItemCustomElement = /** @class */ (function () {
+    function GridsterItemCustomElement(gridster, renderer) {
         this.renderer = renderer;
         this.itemChange = function (_) { };
         this.itemResize = function (_) { };
@@ -28,11 +29,11 @@ var GridsterItemComponent = /** @class */ (function () {
         this.drag = new GridsterDraggable(this, gridster);
         this.resize = new GridsterResizable(this, gridster);
     }
-    GridsterItemComponent.prototype.attached = function () {
+    GridsterItemCustomElement.prototype.attached = function () {
         this.updateOptions();
         this.gridster.addItem(this);
     };
-    GridsterItemComponent.prototype.updateOptions = function () {
+    GridsterItemCustomElement.prototype.updateOptions = function () {
         this.$item = GridsterUtils.merge(this.$item, this.item, {
             cols: undefined,
             rows: undefined,
@@ -49,10 +50,10 @@ var GridsterItemComponent = /** @class */ (function () {
             minItemArea: undefined,
         });
     };
-    GridsterItemComponent.prototype.detached = function () {
+    GridsterItemCustomElement.prototype.detached = function () {
         this.gridster.removeItem(this);
     };
-    GridsterItemComponent.prototype.setSize = function (noCheck) {
+    GridsterItemCustomElement.prototype.setSize = function (noCheck) {
         if (this.gridster.mobile) {
             this.top = 0;
             this.left = 0;
@@ -102,13 +103,13 @@ var GridsterItemComponent = /** @class */ (function () {
         this.itemWidth = this.width;
         this.itemHeight = this.height;
     };
-    GridsterItemComponent.prototype.itemChanged = function () {
+    GridsterItemCustomElement.prototype.itemChanged = function () {
         this.itemChange(this.item);
         if (this.gridster.$options.itemChangeCallback) {
             this.gridster.$options.itemChangeCallback(this.item, this);
         }
     };
-    GridsterItemComponent.prototype.checkItemChanges = function (newValue, oldValue) {
+    GridsterItemCustomElement.prototype.checkItemChanges = function (newValue, oldValue) {
         if (newValue.rows === oldValue.rows && newValue.cols === oldValue.cols && newValue.x === oldValue.x && newValue.y === oldValue.y) {
             return;
         }
@@ -127,31 +128,30 @@ var GridsterItemComponent = /** @class */ (function () {
             this.itemChanged();
         }
     };
-    GridsterItemComponent.prototype.canBeDragged = function () {
+    GridsterItemCustomElement.prototype.canBeDragged = function () {
         return !this.gridster.mobile &&
             (this.$item.dragEnabled === undefined ? this.gridster.$options.draggable.enabled : this.$item.dragEnabled);
     };
-    GridsterItemComponent.prototype.canBeResized = function () {
+    GridsterItemCustomElement.prototype.canBeResized = function () {
         return !this.gridster.mobile &&
             (this.$item.resizeEnabled === undefined ? this.gridster.$options.resizable.enabled : this.$item.resizeEnabled);
     };
     __decorate([
         bindable,
         __metadata("design:type", Object)
-    ], GridsterItemComponent.prototype, "item", void 0);
+    ], GridsterItemCustomElement.prototype, "item", void 0);
     __decorate([
         bindable,
         __metadata("design:type", Object)
-    ], GridsterItemComponent.prototype, "itemChange", void 0);
+    ], GridsterItemCustomElement.prototype, "itemChange", void 0);
     __decorate([
         bindable,
         __metadata("design:type", Object)
-    ], GridsterItemComponent.prototype, "itemResize", void 0);
-    GridsterItemComponent = __decorate([
+    ], GridsterItemCustomElement.prototype, "itemResize", void 0);
+    GridsterItemCustomElement = __decorate([
         autoinject,
-        customElement('gridster-item'),
-        __metadata("design:paramtypes", [GridsterComponent, Renderer])
-    ], GridsterItemComponent);
-    return GridsterItemComponent;
+        __metadata("design:paramtypes", [GridsterCustomElement, Renderer])
+    ], GridsterItemCustomElement);
+    return GridsterItemCustomElement;
 }());
-export { GridsterItemComponent };
+export { GridsterItemCustomElement };

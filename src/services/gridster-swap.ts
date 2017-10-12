@@ -1,14 +1,14 @@
-import { GridsterComponent } from '../gridster';
-import { GridsterItemComponent } from '../gridster-item';
-import { autoinject } from 'aurelia-framework';
+import { GridsterCustomElement } from '../gridster';
+import { GridsterItemCustomElement } from '../gridster-item';
+import { autoinject } from 'aurelia-dependency-injection';
 
 @autoinject
 export class GridsterSwap {
-  private swapedItem: GridsterItemComponent | undefined;
-  private gridsterItem: GridsterItemComponent;
-  private gridster: GridsterComponent;
+  private swapedItem: GridsterItemCustomElement | undefined;
+  private gridsterItem: GridsterItemCustomElement;
+  private gridster: GridsterCustomElement;
 
-  constructor(gridsterItem: GridsterItemComponent, gridster: GridsterComponent) {
+  constructor(gridsterItem: GridsterItemCustomElement, gridster: GridsterCustomElement) {
     this.gridsterItem = gridsterItem;
     this.gridster = gridster;
   }
@@ -55,10 +55,10 @@ export class GridsterSwap {
     }
   }
 
-  checkSwap(pushedBy: GridsterItemComponent): void {
+  checkSwap(pushedBy: GridsterItemCustomElement): void {
     const gridsterItemCollision: any = this.gridster.checkCollision(pushedBy.$item);
     if (gridsterItemCollision && gridsterItemCollision !== true && gridsterItemCollision.canBeDragged()) {
-      const gridsterItemCollide: GridsterItemComponent = gridsterItemCollision;
+      const gridsterItemCollide: GridsterItemCustomElement = gridsterItemCollision;
       gridsterItemCollide.$item.x = pushedBy.item.x || 0;
       gridsterItemCollide.$item.y = pushedBy.item.y || 0;
       pushedBy.$item.x = gridsterItemCollide.item.x || 0;

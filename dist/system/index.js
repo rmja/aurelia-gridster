@@ -1,30 +1,33 @@
-System.register(["./gridster", "./gridster-item", "aurelia-framework"], function (exports_1, context_1) {
+System.register(["aurelia-pal", "./gridster", "./gridster-item", "./gridster-grid"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    function configure(frameworkConfiguration) {
-        frameworkConfiguration.globalResources([
-            aurelia_framework_1.PLATFORM.moduleName('./gridster'),
-            aurelia_framework_1.PLATFORM.moduleName('./gridster-grid'),
-            aurelia_framework_1.PLATFORM.moduleName('./gridster-preview'),
-            aurelia_framework_1.PLATFORM.moduleName('./gridster-item')
-        ]);
+    function configure(config) {
+        config.globalResources(aurelia_pal_1.PLATFORM.moduleName('./gridster'));
+        config.globalResources(aurelia_pal_1.PLATFORM.moduleName('./gridster-grid'));
+        config.globalResources(aurelia_pal_1.PLATFORM.moduleName('./gridster-item'));
+        config.globalResources(aurelia_pal_1.PLATFORM.moduleName('./gridster-preview'));
     }
     exports_1("configure", configure);
-    var aurelia_framework_1;
+    var aurelia_pal_1;
     return {
         setters: [
+            function (aurelia_pal_1_1) {
+                aurelia_pal_1 = aurelia_pal_1_1;
+            },
             function (gridster_1_1) {
                 exports_1({
-                    "GridsterComponent": gridster_1_1["GridsterComponent"]
+                    "GridsterCustomElement": gridster_1_1["GridsterCustomElement"]
                 });
             },
             function (gridster_item_1_1) {
                 exports_1({
-                    "GridsterItemComponent": gridster_item_1_1["GridsterItemComponent"]
+                    "GridsterItemCustomElement": gridster_item_1_1["GridsterItemCustomElement"]
                 });
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
+            function (gridster_grid_1_1) {
+                exports_1({
+                    "GridsterGridCustomElement": gridster_grid_1_1["GridsterGridCustomElement"]
+                });
             }
         ],
         execute: function () {
