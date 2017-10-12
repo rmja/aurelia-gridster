@@ -1,0 +1,9 @@
+<template ref="el" class="gridster-grid">
+    <require from="./gridster-grid.css"></require>
+    <div class="columns" css="height: ${columnsHeight}px">
+        <div class="column" repeat.for="column of columns" css="min-width: ${width}px; margin-left: ${column === 0 && !gridster.$options.outerMargin ? 0 : margin}px"></div>
+    </div>
+    <div class="rows" css="width: ${rowsWidth}px">
+        <div class="row" repeat.for="row of rows" css="height: ${height}px; margin-top: ${row === 0 && !gridster.$options.outerMargin ? 0 : margin}px"></div>
+    </div>
+</template>

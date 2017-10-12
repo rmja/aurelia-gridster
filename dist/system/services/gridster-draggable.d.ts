@@ -1,0 +1,53 @@
+import { Disposable } from 'aurelia-framework';
+import { GridsterComponent } from '../gridster';
+import { GridsterItemComponent } from '../gridster-item';
+import { GridsterPush } from './gridster-push';
+import { GridsterSwap } from './gridster-swap';
+export declare class GridsterDraggable {
+    gridsterItem: GridsterItemComponent;
+    gridster: GridsterComponent;
+    lastMouse: {
+        clientX: number;
+        clientY: number;
+    };
+    offsetLeft: number;
+    offsetTop: number;
+    margin: number;
+    diffTop: number;
+    diffLeft: number;
+    top: number;
+    left: number;
+    height: number;
+    width: number;
+    positionX: number;
+    positionY: number;
+    positionXBackup: number;
+    positionYBackup: number;
+    enabled: boolean;
+    dragStartFunction: (event: any) => void;
+    dragFunction: (event: any) => void;
+    dragStopFunction: (event: any) => void;
+    mousemove: Disposable;
+    mouseup: Disposable;
+    touchmove: Disposable;
+    touchend: Disposable;
+    touchcancel: Disposable;
+    mousedown: Disposable;
+    touchstart: Disposable;
+    push: GridsterPush;
+    swap: GridsterSwap;
+    path: Array<{
+        x: number;
+        y: number;
+    }>;
+    constructor(gridsterItem: GridsterItemComponent, gridster: GridsterComponent);
+    dragStart(e: any): void;
+    dragMove(e: any): void;
+    calculateItemPositionFromMousePosition(e: any): void;
+    dragStop(e: any): void;
+    cancelDrag(): void;
+    makeDrag(): void;
+    calculateItemPosition(): void;
+    toggle(): void;
+    dragStartDelay(e: any): void;
+}
