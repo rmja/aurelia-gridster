@@ -1,9 +1,9 @@
-import { customElement, inject, inlineView } from 'aurelia-framework';
+import { autoinject, customElement, inlineView } from 'aurelia-framework';
 
 import { GridsterComponent } from './gridster';
 import { Renderer } from './renderer';
 
-@inject(GridsterComponent, Renderer)
+@autoinject
 @customElement('gridster-preview')
 @inlineView('<template ref="el" class="gridster-preview"></template>')
 export class GridsterPreviewComponent {

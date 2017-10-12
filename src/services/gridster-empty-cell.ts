@@ -1,10 +1,10 @@
-import { Disposable, inject } from 'aurelia-framework';
+import { Disposable, autoinject } from 'aurelia-framework';
 
 import { GridsterComponent } from '../gridster';
 import { GridsterItem } from '../interfaces/gridster-item';
 import { GridsterUtils } from './gridster-utils';
 
-@inject(GridsterComponent)
+@autoinject
 export class GridsterEmptyCell {
   initialItem: GridsterItem;
   emptyCellClick: Disposable | null;

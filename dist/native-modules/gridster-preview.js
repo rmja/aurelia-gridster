@@ -4,7 +4,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { customElement, inject, inlineView } from 'aurelia-framework';
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+import { autoinject, customElement, inlineView } from 'aurelia-framework';
 import { GridsterComponent } from './gridster';
 import { Renderer } from './renderer';
 var GridsterPreviewComponent = /** @class */ (function () {
@@ -33,9 +36,10 @@ var GridsterPreviewComponent = /** @class */ (function () {
         }
     };
     GridsterPreviewComponent = __decorate([
-        inject(GridsterComponent, Renderer),
+        autoinject,
         customElement('gridster-preview'),
-        inlineView('<template ref="el" class="gridster-preview"></template>')
+        inlineView('<template ref="el" class="gridster-preview"></template>'),
+        __metadata("design:paramtypes", [GridsterComponent, Renderer])
     ], GridsterPreviewComponent);
     return GridsterPreviewComponent;
 }());

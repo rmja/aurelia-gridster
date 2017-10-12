@@ -4,7 +4,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { bindable, customElement, inject } from 'aurelia-framework';
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+import { autoinject, bindable, customElement } from 'aurelia-framework';
 import { GridsterComponent } from './gridster';
 import { GridsterDraggable } from './services/gridster-draggable';
 import { GridsterResizable } from './services/gridster-resizable';
@@ -133,17 +136,21 @@ var GridsterItemComponent = /** @class */ (function () {
             (this.$item.resizeEnabled === undefined ? this.gridster.$options.resizable.enabled : this.$item.resizeEnabled);
     };
     __decorate([
-        bindable
+        bindable,
+        __metadata("design:type", Object)
     ], GridsterItemComponent.prototype, "item", void 0);
     __decorate([
-        bindable
+        bindable,
+        __metadata("design:type", Object)
     ], GridsterItemComponent.prototype, "itemChange", void 0);
     __decorate([
-        bindable
+        bindable,
+        __metadata("design:type", Object)
     ], GridsterItemComponent.prototype, "itemResize", void 0);
     GridsterItemComponent = __decorate([
-        inject(GridsterComponent, Renderer),
-        customElement('gridster-item')
+        autoinject,
+        customElement('gridster-item'),
+        __metadata("design:paramtypes", [GridsterComponent, Renderer])
     ], GridsterItemComponent);
     return GridsterItemComponent;
 }());
