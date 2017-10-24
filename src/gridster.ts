@@ -174,6 +174,11 @@ export class GridsterCustomElement {
   }
 
   calculateLayout(): void {
+    if (!this.el) {
+      // If called from debounce and element is removed from dom
+      return;
+    }
+
     // check to compact
     this.compact.checkCompact();
 
