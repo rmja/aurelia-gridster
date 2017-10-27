@@ -147,6 +147,10 @@ let GridsterCustomElement = GridsterCustomElement_1 = class GridsterCustomElemen
         this.rows = rows;
     }
     calculateLayout() {
+        if (!this.el) {
+            // If called from debounce and element is removed from dom
+            return;
+        }
         // check to compact
         this.compact.checkCompact();
         this.setGridDimensions();

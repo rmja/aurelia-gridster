@@ -150,6 +150,10 @@ var GridsterCustomElement = /** @class */ (function () {
         this.rows = rows;
     };
     GridsterCustomElement.prototype.calculateLayout = function () {
+        if (!this.el) {
+            // If called from debounce and element is removed from dom
+            return;
+        }
         // check to compact
         this.compact.checkCompact();
         this.setGridDimensions();
